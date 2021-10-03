@@ -11,75 +11,87 @@ namespace CalculatorTests
     [Test]
     public void testCalculatorSingleDivision() {
 
-        Assert.AreSame("10", calculator.calculate("100/10"));
+        Assert.AreEqual("10", calculator.calculate("100/10"));
+    }
+    
+    [Test]
+    public void testCalculatorRemoveUnspportedSigns() {
+
+        Assert.AreEqual("10", calculator.calculate("100hgkjölkrty/10asdbgfhölk"));
+    }
+    
+    [Test]
+    public void SingleAddition() {
+
+        Assert.AreEqual("10", calculator.calculate("5+5"));
     }
 
     [Test]
-    public void calculateNestedExpressions() {
-        Assert.AreSame("75000", calculator.calculate("(100+200) * (50+200)"));
+    public void NestedExpressions() {
+        Assert.AreEqual("75000", calculator.calculate("(100+200) * (50+200)"));
     }
 
     [Test]
-    public void calculateNestedNestedExpressions() {
-        Assert.AreSame("75000", calculator.calculate("(100+(50*4)) * (50+(100+100))"));
+    public void NestedNestedExpressions() {
+        Assert.AreEqual("75000", calculator.calculate("(100+(50*4)) * (50+(100+100))"));
     }
 
     [Test]
-    public void testCalculatorMultiDivision() {
+    public void rMultiDivision() {
 
-        Assert.AreSame("0.1", calculator.calculate("100/10/100"));
+        Assert.AreEqual("0.1", calculator.calculate("100/10/100"));
     }
 
     [Test]
-    public void testCalculatorMultiDivisionAndMultiplication() {
+    public void MultiDivisionAndMultiplication() {
 
-        Assert.AreSame("100.0", calculator.calculate("100/10/100*1000"));
+        Assert.AreEqual("100.0", calculator.calculate("100/10/100*1000"));
     }
 
     [Test]
-    public void testCalculatorMultiDivisionMultiplicationAndAddition() {
+    public void MultiDivisionMultiplicationAndAddition() {
 
-        Assert.AreSame("2100.0", calculator.calculate("100/10/100*1000+2000"));
+        Assert.AreEqual("2100.0", calculator.calculate("100/10/100*1000+2000"));
     }
 
     [Test]
-    public void testCalculatorMultiSwapped() {
-        Assert.AreSame("8700", calculator.calculate("200+100+400+200*200/5"));
+    public void MultiSwapped() {
+        Assert.AreEqual("8700", calculator.calculate("200+100+400+200*200/5"));
     }
 
     [Test]
-    public void testCalculatorMultiSwappedMixed() {
-        Assert.AreSame("940", calculator.calculate("200+100+200/5+400+200"));
+    public void MultiSwappedMixed() {
+        Assert.AreEqual("940", calculator.calculate("200+100+200/5+400+200"));
     }
 
     [Test]
-    public void testCalculatorMultiSwappedMixedMixed() {
-        Assert.AreSame("940", calculator.calculate("200+100+200/5+400+200"));
+    public void MultiSwappedMixedMixed() {
+        Assert.AreEqual("940", calculator.calculate("200+100+200/5+400+200"));
     }
 
     [Test]
-    public void testCalculatorSubstration() {
-        Assert.AreSame("0", calculator.calculate("100-100"));
+    public void CalculatorSubstration() {
+        Assert.AreEqual("0", calculator.calculate("100-100"));
     }
 
     [Test]
-    public void testCalculatorSubstrationDivisionMultiplicationAndAddition() {
-        Assert.AreSame("-7300", calculator.calculate("100-100 * 400 / 5 + 600"));
+    public void SubstrationDivisionMultiplicationAndAddition() {
+        Assert.AreEqual("-7300", calculator.calculate("100-100 * 400 / 5 + 600"));
     }
 
     [Test]
-    public void testPowerOf() {
-        Assert.AreSame("4", calculator.calculate("2^2"));
+    public void PowerOf() {
+        Assert.AreEqual("4", calculator.calculate("2^2"));
     }
 
     [Test]
     public void veryLargeValues() {
-        Assert.AreSame("99999999998999900000000001", calculator.calculate("99999999999*999999999999999"));
+        Assert.AreEqual("99999999998999900000000001", calculator.calculate("99999999999*999999999999999"));
     }
 
     [Test]
     public void veryVeryLargeValues() {
-        Assert.AreSame(new Integer(299999), new Integer(calculator.calculate("100.0^99999").Length));
+        Assert.AreEqual(new Integer(299999), new Integer(calculator.calculate("100.0^99999").Length));
     }
         
     }

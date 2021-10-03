@@ -1,7 +1,9 @@
-﻿namespace QueryCalculator.Calculator
+﻿using System;
+
+namespace QueryCalculator.Calculator
 {
     public interface Calculator
     {
-        public string calculate(string query);
+        public String calculate(String query);
     }
 }
