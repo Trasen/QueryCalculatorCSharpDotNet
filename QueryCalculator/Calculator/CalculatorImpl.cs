@@ -69,11 +69,6 @@ namespace QueryCalculator.Calculator
                     tracker.setIndexEnd(i);
                     return tracker;
                 }
-
-                if (i == query.Length - 1 && tracker.getIndexEnd() == -1)
-                {
-                    tracker.setIndexEnd(i);
-                }
             }
 
             return null;

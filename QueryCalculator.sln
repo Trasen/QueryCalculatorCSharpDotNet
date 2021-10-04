@@ -2,7 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryCalculator", "QueryCalculator\QueryCalculator.csproj", "{3C6F2A0A-04E9-4099-872F-8B12A13FB088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "CalculatorTests\CalculatorTests.csproj", "{5E9928FD-079E-4DB6-9651-B24816F7D470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5E9928FD-079E-4DB6-9651-B24816F7D470}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A0A180F4-C4CF-4012-BCF5-B481A1F312A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "src\WebApplication\WebApplication.csproj", "{2404255A-8877-4463-B860-405823803EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,14 @@ Global
 		{5E9928FD-079E-4DB6-9651-B24816F7D470}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E9928FD-079E-4DB6-9651-B24816F7D470}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E9928FD-079E-4DB6-9651-B24816F7D470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2404255A-8877-4463-B860-405823803EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2404255A-8877-4463-B860-405823803EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2404255A-8877-4463-B860-405823803EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2404255A-8877-4463-B860-405823803EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C6F2A0A-04E9-4099-872F-8B12A13FB088} = {A0A180F4-C4CF-4012-BCF5-B481A1F312A2}
+		{5E9928FD-079E-4DB6-9651-B24816F7D470} = {A0A180F4-C4CF-4012-BCF5-B481A1F312A2}
+		{2404255A-8877-4463-B860-405823803EA6} = {A0A180F4-C4CF-4012-BCF5-B481A1F312A2}
 	EndGlobalSection
 EndGlobal
