@@ -7,74 +7,87 @@ namespace QueryCalculator.Calculator
 {
     public class CalculatorImpl : Calculator
     {
-     public String calculate(String query) {
+        private readonly Util _util = new Util();
 
-        query = removeUnsupportedCharacters(query);
+        public String calculate(String query)
+        {
+            query = removeUnsupportedCharacters(query);
 
-        query = dealWithNestedCalculations(query);
+            query = dealWithNestedCalculations(query);
 
-        query = Regex.Replace(query, "[^0-9*-/+^]", "");
+            query = Regex.Replace(query, "[^0-9*-/+^]", "");
 
-        return doCalculation(query);
-}
-
-        private String removeUnsupportedCharacters(String query) {
-                query = Regex.Replace(query, "[^0-9*-/+^()]", "");
-                return query;
+            return doCalculation(query);
         }
 
-        private String dealWithNestedCalculations(String query) {
-                OperatorTracker tracker;
-
-                do {
-                        tracker = findNestedCalculations(query);
-
-                        if (tracker != null) {
-
-                                String result = doCalculation(query.Substring(tracker.getIndexStart(), tracker.getIndexEnd()));
-
-                                StringBuilder stringBuilder = new StringBuilder();
-                                stringBuilder.Append(query);
-                                stringBuilder.Remove(tracker.getIndexStart() -1, tracker.getIndexEnd()).Insert(tracker.getIndexStart() + 1, result);
-
-                                query = stringBuilder.ToString();
-                        }
-                } while (tracker != null);
-                return query;
+        private String removeUnsupportedCharacters(String query)
+        {
+            query = Regex.Replace(query, "[^0-9*-/+^()]", "");
+            return query;
         }
 
-        private OperatorTracker findNestedCalculations(String query) {
+        private String dealWithNestedCalculations(String query)
+        {
+            OperatorTracker tracker;
 
-                OperatorTracker tracker = new OperatorTracker();
-                for (int i = 0; i < query.Length; i++) {
 
-                        char ch = query[i];
+            int i = 0;
+            do
+            {
+                tracker = findNestedCalculations(query);
 
-                        if (ch == '(') {
-                                tracker.setIndexStart(i + 1);
-                        }
-
-                        if (ch == ')') {
-                                tracker.setIndexEnd(i);
-                                return tracker;
-                        }
-
-                        if(i == query.Length-1 && tracker.getIndexEnd() == null) {
-                                tracker.setIndexEnd(i);
-                        }
+                if (tracker != null)
+                {
+                    String calculation = query.Substring(tracker.getIndexStart() + 1,
+                        tracker.getIndexEnd() - tracker.getIndexStart() - 1);
+                    String result = doCalculation(calculation);
+                    
+                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(), tracker.getIndexEnd(), query, result);
+                    
+                    query = stringBuilder.ToString();
+                    i++;
                 }
-                return null;
+            } while (tracker != null);
+
+            return query;
         }
 
-        private String doCalculation(String query) {
+        private OperatorTracker findNestedCalculations(String query)
+        {
+            OperatorTracker tracker = new OperatorTracker();
+            for (int i = 0; i < query.Length; i++)
+            {
+                char ch = query[i];
 
-                Calculation calculation = new CalculationImpl(query);
+                if (ch == '(')
+                {
+                    tracker.setIndexStart(i);
+                }
 
-                calculation.run(CalculationType.getTypeDynamically('^'));
-                calculation.run(CalculationType.getTypeDynamically('*'));
-                calculation.run(CalculationType.getTypeDynamically('+'));
+                if (ch == ')')
+                {
+                    tracker.setIndexEnd(i);
+                    return tracker;
+                }
 
-                return calculation.getResult();
+                if (i == query.Length - 1 && tracker.getIndexEnd() == -1)
+                {
+                    tracker.setIndexEnd(i);
+                }
+            }
+
+            return null;
+        }
+
+        private String doCalculation(String query)
+        {
+            Calculation calculation = new CalculationImpl(query);
+
+            calculation.run(CalculationType.getTypeDynamically('^'));
+            calculation.run(CalculationType.getTypeDynamically('*'));
+            calculation.run(CalculationType.getTypeDynamically('+'));
+
+            return calculation.getResult();
         }
     }
 }

@@ -2,8 +2,8 @@
 {
     public class OperatorTracker
     {
-        private int indexStart;
-        private int indexEnd;
+        private int indexStart = -1;
+        private int indexEnd = -1;
 
         public OperatorTracker(int indexStart, int indexEnd) {
             this.indexStart = indexStart;
