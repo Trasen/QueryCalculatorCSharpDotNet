@@ -2,7 +2,7 @@
 {
     class Addition : CalculationType
     {
-        public Addition() : base('+')
+        public Addition() : base('+', 20)
         {
            
         }

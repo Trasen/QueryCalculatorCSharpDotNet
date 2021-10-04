@@ -2,7 +2,7 @@
 {
     public class Subtraction : CalculationType
     {
-        public Subtraction() : base('-')
+        public Subtraction() : base('-', 20)
         {
         }
 

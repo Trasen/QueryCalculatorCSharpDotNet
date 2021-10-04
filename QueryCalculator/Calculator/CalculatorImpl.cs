@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using QueryCalculator.Calculator.Calculations;
@@ -8,6 +10,14 @@ namespace QueryCalculator.Calculator
     public class CalculatorImpl : Calculator
     {
         private readonly Util _util = new Util();
+        Dictionary<int, Dictionary<char, CalculationType>> orderOf = CalculationType.getOrderOf();
+        List<int> keys;
+
+        public CalculatorImpl()
+        {
+            keys = orderOf.Keys.ToList();
+            keys.Sort();
+        }
 
         public String calculate(String query)
         {
@@ -41,9 +51,10 @@ namespace QueryCalculator.Calculator
                     String calculation = query.Substring(tracker.getIndexStart() + 1,
                         tracker.getIndexEnd() - tracker.getIndexStart() - 1);
                     String result = doCalculation(calculation);
-                    
-                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(), tracker.getIndexEnd(), query, result);
-                    
+
+                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
+                        tracker.getIndexEnd(), query, result);
+
                     query = stringBuilder.ToString();
                     i++;
                 }
@@ -78,10 +89,11 @@ namespace QueryCalculator.Calculator
         {
             Calculation calculation = new CalculationImpl(query);
 
-            calculation.run(CalculationType.getTypeDynamically('^'));
-            calculation.run(CalculationType.getTypeDynamically('*'));
-            calculation.run(CalculationType.getTypeDynamically('+'));
-
+            foreach (var key in keys)
+            {
+                calculation.run(CalculationType.getOrderOf()[key].Values.First());
+            }
+            
             return calculation.getResult();
         }
     }

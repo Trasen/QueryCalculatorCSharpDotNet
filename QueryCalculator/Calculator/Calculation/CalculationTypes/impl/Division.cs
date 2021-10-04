@@ -2,7 +2,7 @@
 {
     class Division : CalculationType
     {
-        public Division() : base('/')
+        public Division() : base('/', 10)
         {
            
         }

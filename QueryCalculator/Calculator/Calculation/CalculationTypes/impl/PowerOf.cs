@@ -4,7 +4,7 @@ namespace QueryCalculator.Calculator.Calculations
 {
     public class PowerOf : CalculationType
     {
-        public PowerOf() : base('^')
+        public PowerOf() : base('^', 5)
         {
         }
 

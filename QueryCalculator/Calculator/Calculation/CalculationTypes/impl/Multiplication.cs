@@ -2,7 +2,7 @@
 {
     class Multiplication : CalculationType
     {
-        public Multiplication() : base('*')
+        public Multiplication() : base('*', 10)
         {
            
         }

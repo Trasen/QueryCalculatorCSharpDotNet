@@ -5,15 +5,15 @@ using System.Reflection;
 
 namespace QueryCalculator.Calculator.Calculations
 {
-
     public abstract class CalculationType
     {
         private static Dictionary<char, CalculationType> map = new();
+        private static Dictionary<int, Dictionary<char, CalculationType>> orderOf = new();
         protected char mathOperator;
+        protected int order;
 
         static CalculationType()
         {
-
             var type = typeof(CalculationType);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -23,13 +23,22 @@ namespace QueryCalculator.Calculator.Calculations
             {
                 CalculationType calcType = (CalculationType) Activator.CreateInstance(loopType);
                 map.TryAdd(calcType.mathOperator, calcType);
+                
+                orderOf.TryAdd(calcType.order, new Dictionary<char, CalculationType>());
+                orderOf[calcType.order].Add(calcType.mathOperator, calcType);
+                
             }
-            
         }
 
-        public CalculationType(char mathOperator)
+        public CalculationType(char mathOperator, int order)
         {
             this.mathOperator = mathOperator;
+            this.order = order;
+        }
+
+        public static Dictionary<int, Dictionary<char, CalculationType>> getOrderOf()
+        {
+            return orderOf;
         }
 
         public abstract decimal calculate(decimal num1, decimal num2);
