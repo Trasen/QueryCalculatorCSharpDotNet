@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
@@ -137,6 +138,24 @@ namespace QueryCalculator.Calculator.Calculations
 
         private CalculationType samePriorityCalculations(char currentCharacter)
         {
+            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationType;
+            
+            CalculationType calculationType = CalculationType.getTypeDynamically(currentCharacter);
+
+            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationType.getOrder()];
+
+            try
+            {
+                this.currentCalculationType = samePriorityCalculations[currentCharacter]);
+                return samePriorityCalculations[currentCharacter];
+            }
+            catch (Exception e)
+            {
+                
+            }
+
+
+
             samePriorityCalculation(currentCharacter, CalculationType.getTypeDynamically('/'),
                 CalculationType.getTypeDynamically('*'));
             samePriorityCalculation(currentCharacter, CalculationType.getTypeDynamically('+'),
@@ -162,8 +181,10 @@ namespace QueryCalculator.Calculator.Calculations
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
 
-            decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(), trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
-            decimal number2 = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(), trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
+            decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(),
+                trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
+            decimal number2 = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
+                trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
 
             String tmp = Convert.ToString(currentCalculationType.calculate(number1, number2));
 

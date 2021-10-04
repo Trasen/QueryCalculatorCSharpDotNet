@@ -26,7 +26,7 @@ namespace QueryCalculator.Calculator
             query = dealWithNestedCalculations(query);
 
             query = Regex.Replace(query, "[^0-9*-/+^]", "");
-
+            System.Console.WriteLine(query);
             return doCalculation(query);
         }
 

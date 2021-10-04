@@ -41,6 +41,11 @@ namespace QueryCalculator.Calculator.Calculations
             return orderOf;
         }
 
+        public int getOrder()
+        {
+            return this.order;
+        }
+
         public abstract decimal calculate(decimal num1, decimal num2);
 
         public static bool isCharacterAnOperator(char mathOperator)
