@@ -1,5 +1,18 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=129dc056_002D4994_002D4499_002D9de5_002D9ac4e9239319/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="NestedExpressions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0eae5d2f_002D0c75_002D4c93_002D96a9_002D395f3e0e12fc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #9" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=11fc1611_002D2da4_002D4a2b_002Dbb28_002D0f61140987d1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #6" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=129dc056_002D4994_002D4499_002D9de5_002D9ac4e9239319/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;ProjectFile&gt;5E9928FD-079E-4DB6-9651-B24816F7D470/f:CalculatorTest.cs&lt;/ProjectFile&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=12b2174b_002Dd3b7_002D4914_002Da3db_002D7e5689a2dc74/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #15" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
@@ -7,21 +20,127 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=14118c32_002D89ff_002D4c9f_002D9693_002D8698c718225d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="testCalculatorSubstrationDivisionMultiplicationAndAddition" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;ProjectFile&gt;5E9928FD-079E-4DB6-9651-B24816F7D470/f:CalculatorTest.cs&lt;/ProjectFile&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1b7070d5_002Dd22e_002D4dbc_002D98ae_002Da9fab262900d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #12" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=30812571_002D431a_002D433d_002Db03e_002Dcd2128ef5dd9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=31c607ac_002D0f95_002D4e91_002D8233_002D796f2761070e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #10" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3680b0bb_002Dcf1a_002D435e_002D8606_002Dc1eb58652a13/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #11" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3683b18b_002Dd12b_002D4f51_002Da490_002D87c8036c8e2e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="testCalculatorSingleAddition" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;ProjectFile&gt;5E9928FD-079E-4DB6-9651-B24816F7D470/f:CalculatorTest.cs&lt;/ProjectFile&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3e99943f_002Dab3b_002D453a_002D837a_002D127d5b8a49f8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedNestedExpressions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedNestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=40cb31b4_002D983a_002D4f9e_002D8b51_002D5e574446b148/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #18" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=548d8529_002Db0c1_002D4cf3_002Dbb2b_002Dea7f616cd528/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=579e58a9_002D0729_002D4f63_002D883a_002D559d705f8c6d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #14" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5ecaca24_002D72de_002D4f39_002D9f17_002Df9b5c703add0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=617c3cde_002Daa69_002D4105_002D88a6_002D3c9437262b3f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #21" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=66226dec_002Df886_002D43e7_002D8b10_002D91d1f1c23f59/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=699ebf26_002D0844_002D47ab_002Da9df_002Db547d3e10bb0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #17" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=707ad136_002De326_002D4fb5_002Da94c_002D869b96c8f178/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #7" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7dbe2174_002Dfbec_002D4d15_002D8e37_002Dae07b4da905d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #19" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=84e29c27_002D2245_002D4f82_002Da215_002Dc958f97f06a9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="removeAndReplaceWithinBrackets" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.UtilTest.removeAndReplaceWithinBrackets&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;ProjectFile&gt;5E9928FD-079E-4DB6-9651-B24816F7D470/f:CalculatorTest.cs&lt;/ProjectFile&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=94ca89e7_002Df5ca_002D4154_002D9afb_002D9fc715661493/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #16" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=991de5ca_002D79eb_002D46e8_002D885b_002D6a2650b7b492/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9c159627_002D5c21_002D467b_002D9762_002D7198c1398a70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #8" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a8075bfa_002D6050_002D4ea3_002Dac4d_002D084ce643217b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #23" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;ProjectFile&gt;5E9928FD-079E-4DB6-9651-B24816F7D470/f:CalculatorTest.cs&lt;/ProjectFile&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bb974ee6_002D96d0_002D4454_002Da0c2_002D1817051dc285/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #22" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c2101c74_002D07b6_002D4fc1_002D8ace_002D0345647a39b0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CalculationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.CalculationTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d1a76375_002D7c9b_002D4b43_002Db057_002D90d65e45711e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #13" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0ccdf0a_002Dbfa0_002D4731_002Dbb2e_002Dce83fb286810/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fbd57d88_002Dd7bb_002D421f_002D8d4d_002D5ba6766e2737/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NestedExpressions #20" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::5E9928FD-079E-4DB6-9651-B24816F7D470::net5.0::CalculatorTests.Tests.NestedExpressions&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
