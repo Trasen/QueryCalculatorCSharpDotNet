@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
@@ -11,50 +10,6 @@ namespace QueryCalculator.Calculator.Calculations
         public CalculationImpl(String query)
         {
             this.query = query;
-        }
-
-        public List<OperatorTracker> findExpression(CalculationType type)
-        {
-            List<OperatorTracker> trackers = new();
-
-            for (int i = 0; i < query.Length; i++)
-            {
-                char ch = query[i];
-
-                if (isCharacterTheCurrentOperatorType(ch, type))
-                {
-                    if (trackers.Count == 0)
-                    {
-                        trackers.Add(new OperatorTracker(0, i));
-                    }
-                    else
-                    {
-                        trackers.Add(new OperatorTracker(trackers[0].getIndexEnd(), i));
-                    }
-                }
-
-                if (isAnOperatorButNotTheCurrentOne(type, ch))
-                {
-                    trackers.Add(new OperatorTracker(trackers[0].getIndexEnd() + 1, i));
-                }
-
-                if (isEndOfExpression(i))
-                {
-                    trackers.Add(new OperatorTracker(trackers[1].getIndexEnd(), i));
-                }
-
-                if (trackers.Count == 2)
-                {
-                    return trackers;
-                }
-            }
-
-            return null;
-        }
-
-        private bool isAnOperatorButNotTheCurrentOne(CalculationType type, char ch)
-        {
-            return CalculationType.isCharacterAnOperator(ch) && ch != type.getOperatorType();
         }
 
         public Calculation run(CalculationType type)
@@ -135,7 +90,7 @@ namespace QueryCalculator.Calculator.Calculations
         {
             if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationTypeInternals;
             
-            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationTypeInternals.getOrder()];
+            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationTypeInternals.getPriority()];
 
             try
             {
