@@ -39,8 +39,7 @@ namespace QueryCalculator.Calculator
         private String dealWithNestedCalculations(String query)
         {
             OperatorTracker tracker;
-
-
+            
             int i = 0;
             do
             {

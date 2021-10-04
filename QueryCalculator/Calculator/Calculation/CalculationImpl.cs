@@ -86,20 +86,20 @@ namespace QueryCalculator.Calculator.Calculations
             return currentCharacter == calculationType.getOperatorType();
         }
 
-        private CalculationType samePriorityCalculations(char currentCharacter, CalculationType currentCalculationTypeInternals)
+        private CalculationType samePriorityCalculations(char currentCharacter, CalculationType currentCalculationType)
         {
-            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationTypeInternals;
+            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationType;
             
-            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationTypeInternals.getPriority()];
+            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationType.getPriority()];
 
             try
             {
-                currentCalculationTypeInternals = samePriorityCalculations[currentCharacter];
+                currentCalculationType = samePriorityCalculations[currentCharacter];
                 return samePriorityCalculations[currentCharacter];
             }
             catch (Exception e)
             {
-                return currentCalculationTypeInternals;
+                return currentCalculationType;
             }
         }
 
