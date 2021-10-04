@@ -8,13 +8,13 @@ namespace QueryCalculator.Calculator.Calculations
     public abstract class CalculationType
     {
         private static Dictionary<char, CalculationType> map = new();
-        private static Dictionary<int, Dictionary<char, CalculationType>> orderOf = new();
+        private static Dictionary<int, Dictionary<char, CalculationType>> priorityIndex = new();
         protected char mathOperator;
-        protected int order;
+        protected int priority;
 
-        static CalculationType()
+        static CalculationType() // Instance every CalculationType and put them in to order of priority statically - letting us simply create an implementation of a CalculationType and it will automatically be handled correctly in the solution.
         {
-            var type = typeof(CalculationType);
+            Type type = typeof(CalculationType);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p) && !p.IsAbstract);
@@ -24,21 +24,26 @@ namespace QueryCalculator.Calculator.Calculations
                 CalculationType calcType = (CalculationType) Activator.CreateInstance(loopType);
                 map.TryAdd(calcType.mathOperator, calcType);
                 
-                orderOf.TryAdd(calcType.order, new Dictionary<char, CalculationType>());
-                orderOf[calcType.order].Add(calcType.mathOperator, calcType);
+                priorityIndex.TryAdd(calcType.priority, new Dictionary<char, CalculationType>());
+                priorityIndex[calcType.priority].Add(calcType.mathOperator, calcType);
                 
             }
         }
 
-        public CalculationType(char mathOperator, int order)
+        public CalculationType(char mathOperator, int priority)
         {
             this.mathOperator = mathOperator;
-            this.order = order;
+            this.priority = priority;
         }
 
         public static Dictionary<int, Dictionary<char, CalculationType>> getOrderOf()
         {
-            return orderOf;
+            return priorityIndex;
+        }
+
+        public int getPriority()
+        {
+            return this.priority;
         }
 
         public abstract decimal calculate(decimal num1, decimal num2);
@@ -51,11 +56,6 @@ namespace QueryCalculator.Calculator.Calculations
         public char getOperatorType()
         {
             return this.mathOperator;
-        }
-
-        public static CalculationType getTypeDynamically(char mathOperator)
-        {
-            return map[mathOperator];
         }
     }
 }
