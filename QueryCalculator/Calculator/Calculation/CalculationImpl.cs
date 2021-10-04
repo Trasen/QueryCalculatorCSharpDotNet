@@ -23,9 +23,9 @@ namespace QueryCalculator.Calculator.Calculations
             {
                 char currentCharacter = query[characterPositionInString];
 
-                type = samePriorityCalculations(currentCharacter, type);
+                type = type.samePriorityCalculations(currentCharacter);
 
-                if (isCharacterTheCurrentOperatorType(currentCharacter, type))
+                if (type.isCharacterTheCurrentOperatorType(currentCharacter))
                 {
                     operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
 
@@ -35,7 +35,7 @@ namespace QueryCalculator.Calculator.Calculations
                     {
                         char nestedCharacter = query[j];
 
-                        if (CalculationType.isCharacterAnOperator(nestedCharacter))
+                        if (type.isCharacterAnOperator(nestedCharacter))
                         {
                             operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
                             lastOperatorIndex = j + 1;
@@ -43,12 +43,12 @@ namespace QueryCalculator.Calculator.Calculations
                         }
                     }
                 }
-                else if (CalculationType.isCharacterAnOperator(currentCharacter))
+                else if (type.isCharacterAnOperator(currentCharacter))
                 {
                     lastOperatorIndex = characterPositionInString + 1;
                 }
 
-                if (isEndOfExpression(characterPositionInString))
+                if (characterPositionInString == query.Length - 1)
                 {
                     operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString + 1));
                 }
@@ -75,33 +75,7 @@ namespace QueryCalculator.Calculator.Calculations
 
             return false;
         }
-
-        private bool isEndOfExpression(int i)
-        {
-            return i == query.Length - 1;
-        }
-
-        private bool isCharacterTheCurrentOperatorType(char currentCharacter, CalculationType calculationType)
-        {
-            return currentCharacter == calculationType.getOperatorType();
-        }
-
-        private CalculationType samePriorityCalculations(char currentCharacter, CalculationType currentCalculationType)
-        {
-            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationType;
-            
-            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationType.getPriority()];
-
-            try
-            {
-                currentCalculationType = samePriorityCalculations[currentCharacter];
-                return samePriorityCalculations[currentCharacter];
-            }
-            catch (Exception e)
-            {
-                return currentCalculationType;
-            }
-        }
+        
 
         private void resolveCalculation(List<OperatorTracker> trackers, CalculationType currentCalculationType)
         {
