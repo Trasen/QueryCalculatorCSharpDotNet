@@ -8,8 +8,6 @@ namespace QueryCalculator.Calculator.Calculations
     class CalculationImpl : Calculation
     {
         private String query;
-        private CalculationType currentCalculationType;
-
         public CalculationImpl(String query)
         {
             this.query = query;
@@ -17,14 +15,13 @@ namespace QueryCalculator.Calculator.Calculations
 
         public List<OperatorTracker> findExpression(CalculationType type)
         {
-            currentCalculationType = type;
             List<OperatorTracker> trackers = new();
 
             for (int i = 0; i < query.Length; i++)
             {
                 char ch = query[i];
 
-                if (isCharacterTheCurrentOperatorType(ch))
+                if (isCharacterTheCurrentOperatorType(ch, type))
                 {
                     if (trackers.Count == 0)
                     {
@@ -62,8 +59,6 @@ namespace QueryCalculator.Calculator.Calculations
 
         public Calculation run(CalculationType type)
         {
-            this.currentCalculationType = type;
-
             int lastOperatorIndex = 0;
             List<OperatorTracker> operatorTrackers = new();
 
@@ -73,9 +68,9 @@ namespace QueryCalculator.Calculator.Calculations
             {
                 char currentCharacter = query[characterPositionInString];
 
-                type = samePriorityCalculations(currentCharacter);
+                type = samePriorityCalculations(currentCharacter, type);
 
-                if (isCharacterTheCurrentOperatorType(currentCharacter))
+                if (isCharacterTheCurrentOperatorType(currentCharacter, type))
                 {
                     operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
 
@@ -105,7 +100,7 @@ namespace QueryCalculator.Calculator.Calculations
 
                 if (isOperatorsResolvable(operatorTrackers))
                 {
-                    this.resolveCalculation(operatorTrackers);
+                    this.resolveCalculation(operatorTrackers, type);
 
                     lastOperatorIndex = 0;
                     characterPositionInString = 0;
@@ -131,52 +126,29 @@ namespace QueryCalculator.Calculator.Calculations
             return i == query.Length - 1;
         }
 
-        private bool isCharacterTheCurrentOperatorType(char currentCharacter)
+        private bool isCharacterTheCurrentOperatorType(char currentCharacter, CalculationType calculationType)
         {
-            return currentCharacter == currentCalculationType.getOperatorType();
+            return currentCharacter == calculationType.getOperatorType();
         }
 
-        private CalculationType samePriorityCalculations(char currentCharacter)
+        private CalculationType samePriorityCalculations(char currentCharacter, CalculationType currentCalculationTypeInternals)
         {
-            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationType;
+            if(!CalculationType.isCharacterAnOperator(currentCharacter)) return currentCalculationTypeInternals;
             
-            CalculationType calculationType = CalculationType.getTypeDynamically(currentCharacter);
-
-            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationType.getOrder()];
+            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[currentCalculationTypeInternals.getOrder()];
 
             try
             {
-                this.currentCalculationType = samePriorityCalculations[currentCharacter]);
+                currentCalculationTypeInternals = samePriorityCalculations[currentCharacter];
                 return samePriorityCalculations[currentCharacter];
             }
             catch (Exception e)
             {
-                
-            }
-
-
-
-            samePriorityCalculation(currentCharacter, CalculationType.getTypeDynamically('/'),
-                CalculationType.getTypeDynamically('*'));
-            samePriorityCalculation(currentCharacter, CalculationType.getTypeDynamically('+'),
-                CalculationType.getTypeDynamically('-'));
-
-            return currentCalculationType;
-        }
-
-        private void samePriorityCalculation(char currentCharacter, CalculationType firstType,
-            CalculationType secondType)
-        {
-            if (currentCalculationType == firstType || currentCalculationType == secondType)
-            {
-                if (currentCharacter == firstType.getOperatorType() || currentCharacter == secondType.getOperatorType())
-                {
-                    currentCalculationType = CalculationType.getTypeDynamically(currentCharacter);
-                }
+                return currentCalculationTypeInternals;
             }
         }
 
-        private void resolveCalculation(List<OperatorTracker> trackers)
+        private void resolveCalculation(List<OperatorTracker> trackers, CalculationType currentCalculationType)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
