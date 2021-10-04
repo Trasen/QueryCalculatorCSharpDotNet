@@ -35,6 +35,27 @@ namespace QueryCalculator.Calculator.Calculations
             this.mathOperator = mathOperator;
             this.priority = priority;
         }
+        
+        public bool isCharacterTheCurrentOperatorType(char currentCharacter)
+        {
+            return currentCharacter == this.getOperatorType();
+        }
+
+        public CalculationType samePriorityCalculations(char currentCharacter)
+        {
+            if(!this.isCharacterAnOperator(currentCharacter)) return this;
+            
+            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[this.getPriority()];
+
+            try
+            {
+                return samePriorityCalculations[currentCharacter];
+            }
+            catch (Exception e)
+            {
+                return this;
+            }
+        }
 
         public static Dictionary<int, Dictionary<char, CalculationType>> getOrderOf()
         {
@@ -48,7 +69,7 @@ namespace QueryCalculator.Calculator.Calculations
 
         public abstract decimal calculate(decimal num1, decimal num2);
 
-        public static bool isCharacterAnOperator(char mathOperator)
+        public bool isCharacterAnOperator(char mathOperator)
         {
             return map.ContainsKey(mathOperator);
         }
