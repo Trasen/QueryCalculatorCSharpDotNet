@@ -25,14 +25,27 @@ namespace QueryCalculator.Calculator
 
             query = dealWithNestedCalculations(query);
 
-            query = Regex.Replace(query, "[^0-9*-/+^]", "");
             System.Console.WriteLine(query);
             return doCalculation(query);
         }
 
         private String removeUnsupportedCharacters(String query)
         {
-            query = Regex.Replace(query, "[^0-9*-/+^()]", "");
+
+            StringBuilder flushedString = new StringBuilder();
+            
+            for (int i = 0; i < query.Length; i++)
+            {
+                char ch = query[i];
+
+                if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')')
+                {
+                    flushedString.Append(ch);
+                }
+            }
+
+
+            query = flushedString.ToString();
             return query;
         }
 

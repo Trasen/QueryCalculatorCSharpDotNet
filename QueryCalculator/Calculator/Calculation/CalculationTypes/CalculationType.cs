@@ -78,5 +78,10 @@ namespace QueryCalculator.Calculator.Calculations
         {
             return this.mathOperator;
         }
+
+        public static bool Contains(char ch)
+        {
+            return map.ContainsKey(ch);
+        }
     }
 }
