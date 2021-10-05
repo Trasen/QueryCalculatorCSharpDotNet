@@ -49,6 +49,12 @@ namespace CalculatorTests
         {
             Assert.AreEqual("28.2842712474619", calculator.calculate("√800"));
         }
+        
+        [Test]
+        public void SquareRootLargeCombined()
+        {
+            Assert.AreEqual("35.9911100134464", calculator.calculate("√(500+6) * 8 / 5"));
+        }
 
         [Test]
         public void testCalculatorRemoveUnspportedSigns()
