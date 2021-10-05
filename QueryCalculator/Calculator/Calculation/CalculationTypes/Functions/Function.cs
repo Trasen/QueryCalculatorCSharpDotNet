@@ -9,24 +9,15 @@ namespace QueryCalculator.Calculator.Calculations
         public Function(char mathOperator, int priority) : base(mathOperator, priority)
         {
         }
-        
-        public override String resolve(List<OperatorTracker> trackers, String query)
+
+        override protected decimal[] extractCalculatableNumbers(List<OperatorTracker> trackers, string query)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(query);
+            decimal[] numbers = new decimal[1];
 
-            String numberToConvert = query.Substring(trackers[1].getIndexStart(),
-                trackers[1].getIndexEnd() - trackers[1].getIndexStart());
-            
-            decimal number1 = Convert.ToDecimal(numberToConvert);
+            numbers[0] = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
+                trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
 
-            String tmp = Convert.ToString(calculate(number1));
-
-            stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
-                .Insert(trackers[0].getIndexStart(), tmp);
-            query = stringBuilder.ToString();
-            Console.WriteLine(query);
-            return query;
+            return numbers;
         }
     }
 }

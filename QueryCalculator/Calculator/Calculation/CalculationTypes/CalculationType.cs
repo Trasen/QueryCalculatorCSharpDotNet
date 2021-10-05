@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
 {
@@ -80,10 +81,33 @@ namespace QueryCalculator.Calculator.Calculations
         {
             return map.ContainsKey(ch);
         }
-
-        public abstract String resolve(List<OperatorTracker> trackers, String query);
         
+        protected string removeCalculatedExpressionFromQuery(List<OperatorTracker> trackers, StringBuilder stringBuilder, string tmp)
+        {
+            string query;
+            stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
+                .Insert(trackers[0].getIndexStart(), tmp);
+            query = stringBuilder.ToString();
+            Console.WriteLine(query);
+            return query;
+        }
+
+        public String resolve(List<OperatorTracker> trackers, String query)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(query);
+
+            decimal[] numbers = extractCalculatableNumbers(trackers, query);
+            
+            String tmp = Convert.ToString(calculate(numbers));
+
+            query = removeCalculatedExpressionFromQuery(trackers, stringBuilder, tmp);
+            return query;
+        }
+
         protected abstract decimal calculate(params decimal[] values);
+
+        protected abstract decimal[] extractCalculatableNumbers(List<OperatorTracker> trackers, string query);
 
     }
 }
