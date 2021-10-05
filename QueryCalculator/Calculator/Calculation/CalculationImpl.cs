@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
 {
@@ -35,7 +34,7 @@ namespace QueryCalculator.Calculator.Calculations
                     {
                         char nestedCharacter = query[j];
 
-                        if (type.isCharacterAnOperator(nestedCharacter))
+                        if (CalculationType.isCharacterAnOperator(nestedCharacter))
                         {
                             operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
                             lastOperatorIndex = j + 1;
@@ -43,7 +42,7 @@ namespace QueryCalculator.Calculator.Calculations
                         }
                     }
                 }
-                else if (type.isCharacterAnOperator(currentCharacter))
+                else if (CalculationType.isCharacterAnOperator(currentCharacter))
                 {
                     lastOperatorIndex = characterPositionInString + 1;
                 }
@@ -55,7 +54,7 @@ namespace QueryCalculator.Calculator.Calculations
 
                 if (isOperatorsResolvable(operatorTrackers))
                 {
-                    this.resolveCalculation(operatorTrackers, type);
+                    query = type.resolve(operatorTrackers, query);
 
                     lastOperatorIndex = 0;
                     characterPositionInString = 0;
@@ -76,24 +75,6 @@ namespace QueryCalculator.Calculator.Calculations
             return false;
         }
         
-
-        private void resolveCalculation(List<OperatorTracker> trackers, CalculationType currentCalculationType)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(query);
-
-            decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(),
-                trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
-            decimal number2 = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
-                trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
-
-            String tmp = Convert.ToString(currentCalculationType.calculate(number1, number2));
-
-            stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
-                .Insert(trackers[0].getIndexStart(), tmp);
-            query = stringBuilder.ToString();
-            System.Console.WriteLine(query);
-        }
 
         public String getResult()
         {

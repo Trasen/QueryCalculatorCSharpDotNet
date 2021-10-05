@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
 {
@@ -43,7 +44,7 @@ namespace QueryCalculator.Calculator.Calculations
 
         public CalculationType samePriorityCalculations(char currentCharacter)
         {
-            if(!this.isCharacterAnOperator(currentCharacter)) return this;
+            if(!isCharacterAnOperator(currentCharacter)) return this;
             
             Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[this.getPriority()];
 
@@ -67,9 +68,9 @@ namespace QueryCalculator.Calculator.Calculations
             return this.priority;
         }
 
-        public abstract decimal calculate(decimal num1, decimal num2);
+        protected abstract decimal calculate(decimal num1, decimal num2);
 
-        public bool isCharacterAnOperator(char mathOperator)
+        public static bool isCharacterAnOperator(char mathOperator)
         {
             return map.ContainsKey(mathOperator);
         }
@@ -82,6 +83,25 @@ namespace QueryCalculator.Calculator.Calculations
         public static bool Contains(char ch)
         {
             return map.ContainsKey(ch);
+        }
+        
+        public String resolve(List<OperatorTracker> trackers, String query)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(query);
+
+            decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(),
+                trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
+            decimal number2 = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
+                trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
+
+            String tmp = Convert.ToString(this.calculate(number1, number2));
+
+            stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
+                .Insert(trackers[0].getIndexStart(), tmp);
+            query = stringBuilder.ToString();
+            Console.WriteLine(query);
+            return query;
         }
     }
 }

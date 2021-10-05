@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+
 using QueryCalculator.Calculator.Calculations;
 
 namespace QueryCalculator.Calculator
 {
     public class CalculatorImpl : Calculator
     {
-        private readonly Util _util = new Util();
+        private readonly Util _util = new();
         Dictionary<int, Dictionary<char, CalculationType>> orderOf = CalculationType.getOrderOf();
         List<int> keys;
 

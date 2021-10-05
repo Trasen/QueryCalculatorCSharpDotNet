@@ -8,7 +8,7 @@ namespace QueryCalculator.Calculator.Calculations
         {
         }
 
-        public override decimal calculate(decimal num1, decimal num2)
+        protected override decimal calculate(decimal num1, decimal num2)
         {
             return Convert.ToDecimal(Math.Pow(Convert.ToDouble(num1), Convert.ToDouble(num2)));
         }
