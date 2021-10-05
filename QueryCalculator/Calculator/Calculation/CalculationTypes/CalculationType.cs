@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
 {
@@ -85,7 +83,7 @@ namespace QueryCalculator.Calculator.Calculations
 
         public abstract String resolve(List<OperatorTracker> trackers, String query);
         
-        protected abstract decimal calculate(decimal num1, decimal num2);
+        protected abstract decimal calculate(params decimal[] values);
 
     }
 }

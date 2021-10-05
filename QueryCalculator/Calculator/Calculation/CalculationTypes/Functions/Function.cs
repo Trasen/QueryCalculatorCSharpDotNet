@@ -4,9 +4,9 @@ using System.Text;
 
 namespace QueryCalculator.Calculator.Calculations
 {
-    public abstract class Operator : CalculationType
+    public abstract class Function : CalculationType
     {
-        public Operator(char mathOperator, int priority) : base(mathOperator, priority)
+        public Function(char mathOperator, int priority) : base(mathOperator, priority)
         {
         }
         
@@ -17,10 +17,8 @@ namespace QueryCalculator.Calculator.Calculations
 
             decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(),
                 trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
-            decimal number2 = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
-                trackers[1].getIndexEnd() - trackers[1].getIndexStart()));
 
-            String tmp = Convert.ToString(calculate(number1, number2));
+            String tmp = Convert.ToString(calculate(number1));
 
             stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
                 .Insert(trackers[0].getIndexStart(), tmp);

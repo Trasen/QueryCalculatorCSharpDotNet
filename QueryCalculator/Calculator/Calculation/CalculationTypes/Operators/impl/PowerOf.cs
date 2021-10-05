@@ -8,9 +8,10 @@ namespace QueryCalculator.Calculator.Calculations
         {
         }
 
-        protected override decimal calculate(decimal num1, decimal num2)
+        protected override decimal calculate(params decimal[] values)
         {
-            return Convert.ToDecimal(Math.Pow(Convert.ToDouble(num1), Convert.ToDouble(num2)));
+            return Convert.ToDecimal(Math.Pow(Convert.ToDouble(values[0] ), Convert.ToDouble(values[1])));
         }
+        
     }
 }

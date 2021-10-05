@@ -7,9 +7,9 @@
            
         }
 
-        protected override decimal calculate(decimal num1, decimal num2)
+        protected override decimal calculate(params decimal[] values)
         {
-            return num1 / num2;
+            return values[0] / values[1];
         }
     }
 }
