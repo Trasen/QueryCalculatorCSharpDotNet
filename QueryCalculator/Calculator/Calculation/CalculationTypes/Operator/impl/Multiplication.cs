@@ -1,14 +1,15 @@
 ﻿namespace QueryCalculator.Calculator.Calculations
 {
-    public class Subtraction : CalculationType
+    class Multiplication : Operator
     {
-        public Subtraction() : base('-', 20)
+        public Multiplication() : base('*', 10)
         {
+           
         }
 
         protected override decimal calculate(decimal num1, decimal num2)
         {
-            return num1 - num2;
+            return num1 * num2;
         }
     }
 }

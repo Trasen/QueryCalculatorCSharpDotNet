@@ -1,6 +1,6 @@
 ﻿namespace QueryCalculator.Calculator.Calculations
 {
-    class Addition : CalculationType
+    class Addition : Operator
     {
         public Addition() : base('+', 20)
         {

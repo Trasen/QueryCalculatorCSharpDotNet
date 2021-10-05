@@ -1,6 +1,6 @@
 ﻿namespace QueryCalculator.Calculator.Calculations
 {
-    class Division : CalculationType
+    class Division : Operator
     {
         public Division() : base('/', 10)
         {

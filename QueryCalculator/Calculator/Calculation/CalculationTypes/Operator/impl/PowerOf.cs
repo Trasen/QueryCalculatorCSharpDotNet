@@ -2,7 +2,7 @@
 
 namespace QueryCalculator.Calculator.Calculations
 {
-    public class PowerOf : CalculationType
+    public class PowerOf : Operator
     {
         public PowerOf() : base('^', 5)
         {
