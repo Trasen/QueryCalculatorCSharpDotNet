@@ -15,8 +15,10 @@ namespace QueryCalculator.Calculator.Calculations
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
 
-            decimal number1 = Convert.ToDecimal(query.Substring(trackers[0].getIndexStart(),
-                trackers[0].getIndexEnd() - trackers[0].getIndexStart()));
+            String numberToConvert = query.Substring(trackers[1].getIndexStart(),
+                trackers[1].getIndexEnd() - trackers[1].getIndexStart());
+            
+            decimal number1 = Convert.ToDecimal(numberToConvert);
 
             String tmp = Convert.ToString(calculate(number1));
 

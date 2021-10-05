@@ -37,7 +37,18 @@ namespace CalculatorTests
         {
             Assert.AreEqual("4", calculator.calculate("2*2"));
         }
+        
+        [Test]
+        public void SquareRoot()
+        {
+            Assert.AreEqual("2", calculator.calculate("√4"));
+        }
 
+        [Test]
+        public void SquareRootLarge()
+        {
+            Assert.AreEqual("28.2842712474619", calculator.calculate("√800"));
+        }
 
         [Test]
         public void testCalculatorRemoveUnspportedSigns()
