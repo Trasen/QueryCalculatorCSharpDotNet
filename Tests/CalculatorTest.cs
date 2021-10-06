@@ -9,7 +9,7 @@ namespace CalculatorTests
         private Calculator calculator = new CalculatorImpl();
 
         [Test]
-        public void testCalculatorSingleDivision()
+        public void SingleDivision()
         {
             Assert.AreEqual("10", calculator.calculate("100/10"));
         }
