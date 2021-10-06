@@ -43,6 +43,12 @@ namespace CalculatorTests
         {
             Assert.AreEqual("2", calculator.calculate("√4"));
         }
+        
+        [Test]
+        public void DealWithNegativeCalculations()
+        {
+            Assert.AreEqual("-4", calculator.calculate("-2 + -2"));
+        }
 
         [Test]
         public void SquareRootLarge()
@@ -122,6 +128,7 @@ namespace CalculatorTests
         {
             Assert.AreEqual("-7300", calculator.calculate("100-100 * 400 / 5 + 600"));
         }
+        
 
         [Test]
         public void veryLargeValues()

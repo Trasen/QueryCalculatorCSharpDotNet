@@ -1,4 +1,7 @@
-﻿namespace QueryCalculator.Calculator.Calculations
+﻿using System;
+using System.Collections.Generic;
+
+namespace QueryCalculator.Calculator.Calculations
 {
     public class Subtraction : Operator
     {
@@ -10,5 +13,6 @@
         {
             return values[0] - values[1];
         }
+        
     }
 }

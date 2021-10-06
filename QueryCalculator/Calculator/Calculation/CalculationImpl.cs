@@ -26,7 +26,25 @@ namespace QueryCalculator.Calculator.Calculations
 
                 if (type.isCharacterTheCurrentOperatorType(currentCharacter))
                 {
+                    
+                    
+                    if(type.getOperatorType() != '-') {
                     operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                    }
+                    else
+                    {
+                        if (characterPositionInString != 0)
+                        {
+                            if (Char.IsNumber(query[characterPositionInString -1]))
+                            {
+                                operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                            }
+                        }
+                        else
+                        {
+                            operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                        }
+                    }
 
                     lastOperatorIndex = characterPositionInString + 1;
 
