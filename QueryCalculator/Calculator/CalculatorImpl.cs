@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 
 using QueryCalculator.Calculator.Calculations;
-using Index = QueryCalculator.Calculator.Calculations.Index;
 
 namespace QueryCalculator.Calculator
 {
@@ -52,37 +51,50 @@ namespace QueryCalculator.Calculator
 
         private String dealWithNestedCalculations(String query)
         {
-            Index index;
+            OperatorTracker tracker;
             
             int i = 0;
             do
             {
-                index = new NestedCalculationTracker(query);
-                String calculation = query.Substring(index.getStart() + 1,
-                    index.getEnd() - index.getStart() - 1);
-                String result = doCalculation(calculation);
+                tracker = findNestedCalculations(query);
 
-                StringBuilder stringBuilder = _util.replaceIndexFromTomInString(index, query, result);
+                if (tracker != null)
+                {
+                    String calculation = query.Substring(tracker.getIndexStart() + 1,
+                        tracker.getIndexEnd() - tracker.getIndexStart() - 1);
+                    String result = doCalculation(calculation);
 
-                query = stringBuilder.ToString();
-                return query;
-                
+                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
+                        tracker.getIndexEnd(), query, result);
+
+                    query = stringBuilder.ToString();
                     i++;
-            } while (index != null);
+                }
+            } while (tracker != null);
 
             return query;
         }
-        
-        private Index findNestedCalculations(String query)
-        {
-            Index index = new NestedCalculationTracker(query);
 
-            if (index.IsComplete())
+        private OperatorTracker findNestedCalculations(String query)
+        {
+            OperatorTracker tracker = new OperatorTracker();
+            for (int i = 0; i < query.Length; i++)
             {
-                return index;
+                char ch = query[i];
+
+                if (ch == '(')
+                {
+                    tracker.setIndexStart(i);
+                }
+
+                if (ch == ')')
+                {
+                    tracker.setIndexEnd(i);
+                    return tracker;
+                }
             }
 
-            return new Invalid();
+            return null;
         }
 
         private String doCalculation(String query)

@@ -14,33 +14,52 @@ namespace QueryCalculator.Calculator.Calculations
         public Calculation run(CalculationType type)
         {
             int lastOperatorIndex = 0;
-            List<Index> operatorTrackers = new();
+            List<OperatorTracker> operatorTrackers = new();
 
             for (int characterPositionInString = 0;
                 characterPositionInString < query.Length;
                 characterPositionInString++)
             {
                 char currentCharacter = query[characterPositionInString];
+
                 
-                if(isNegativeValueAndNotOperator(characterPositionInString, currentCharacter)) continue;
+                //-2 + -2
+                if (characterPositionInString == 0 && currentCharacter == '-')
+                {
+                    continue;
+                }
+
+                if (currentCharacter == '-' && !Char.IsNumber(query[characterPositionInString - 1]))
+                {
+                    continue;
+                }
 
                 type = type.samePriorityCalculations(currentCharacter);
 
                 if (type.isCharacterTheCurrentOperatorType(currentCharacter))
                 {
-                    operatorTrackers.Add(new NumberTracker(lastOperatorIndex, characterPositionInString));
+                    operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
                     
                     lastOperatorIndex = characterPositionInString + 1;
 
                     for (int j = characterPositionInString + 1; j < query.Length; j++)
                     {
-                        char nestedCurrentCharacter = query[j];
+                        char nestedCharacter = query[j];
 
-                        if (isNegativeValueAndNotOperator(j, nestedCurrentCharacter)) continue;
-
-                        if (CalculationType.isCharacterAnOperator(nestedCurrentCharacter))
+                        //-2 + -2
+                        if (j == 0 && nestedCharacter == '-')
                         {
-                            operatorTrackers.Add(new NumberTracker(lastOperatorIndex, j));
+                            continue;
+                        }
+
+                        if (nestedCharacter == '-' && !Char.IsNumber(query[j - 1]))
+                        {
+                            continue;
+                        }
+                        
+                        if (CalculationType.isCharacterAnOperator(nestedCharacter))
+                        {
+                            operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
                             lastOperatorIndex = j + 1;
                             j = query.Length;
                         }
@@ -53,7 +72,7 @@ namespace QueryCalculator.Calculator.Calculations
 
                 if (characterPositionInString == query.Length - 1)
                 {
-                    operatorTrackers.Add(new NumberTracker(lastOperatorIndex, characterPositionInString + 1));
+                    operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString + 1));
                 }
 
                 if (isOperatorsResolvable(operatorTrackers))
@@ -69,22 +88,7 @@ namespace QueryCalculator.Calculator.Calculations
             return this;
         }
 
-        private bool isNegativeValueAndNotOperator(int j, char nestedCharacter)
-        {
-            if (j == 0 && nestedCharacter == '-')
-            {
-                return true;
-            }
-
-            if (nestedCharacter == '-' && !Char.IsNumber(query[j - 1]))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool isOperatorsResolvable(List<Index> operatorTrackers)
+        private bool isOperatorsResolvable(List<OperatorTracker> operatorTrackers)
         {
             if (operatorTrackers.Count == 2)
             {
