@@ -38,14 +38,14 @@ namespace QueryCalculator.Calculator
             {
                 char ch = query[i];
 
-                if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')')
+                if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')' || ch == ',' || ch == '.')
                 {
                     flushedString.Append(ch);
                 }
             }
 
 
-            query = flushedString.ToString();
+            query = flushedString.ToString().Replace(',', '.');
             return query;
         }
 
