@@ -60,17 +60,18 @@ namespace QueryCalculator.Calculator
 
                 if (tracker != null)
                 {
-                    String calculation = query.Substring(tracker.getIndexStart() + 1,
-                        tracker.getIndexEnd() - tracker.getIndexStart() - 1);
-                    String result = doCalculation(calculation);
-
-                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
-                        tracker.getIndexEnd(), query, result);
-
-                    query = stringBuilder.ToString();
+                    query = getQuery(query, tracker);
                     i++;
                 }
             } while (tracker != null);
+
+            return query;
+        }
+
+        private string getQuery(string query, OperatorTracker tracker)
+        {
+            GetQuery hjelpeTillOHemteQuery = new GetQuery();
+            query = hjelpeTillOHemteQuery.getQuery(query, tracker, _util, doCalculation);
 
             return query;
         }
