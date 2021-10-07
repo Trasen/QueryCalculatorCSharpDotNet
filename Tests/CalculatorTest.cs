@@ -13,6 +13,12 @@ namespace CalculatorTests
         {
             Assert.AreEqual("10", calculator.calculate("100/10"));
         }
+        
+        [Test]
+        public void SingleDivisionDecimal()
+        {
+            Assert.AreEqual("2", calculator.calculate("1/0.5"));
+        }
 
         [Test]
         public void Addition()
