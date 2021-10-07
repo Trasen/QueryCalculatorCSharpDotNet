@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using QueryCalculator.Calculator.Calculations;
+using Index = QueryCalculator.Calculator.Calculations.Index;
 
 namespace QueryCalculator.Calculator
 {
@@ -51,50 +52,37 @@ namespace QueryCalculator.Calculator
 
         private String dealWithNestedCalculations(String query)
         {
-            OperatorTracker tracker;
+            Index index;
             
             int i = 0;
             do
             {
-                tracker = findNestedCalculations(query);
+                index = new NestedCalculationTracker(query);
+                String calculation = query.Substring(index.getStart() + 1,
+                    index.getEnd() - index.getStart() - 1);
+                String result = doCalculation(calculation);
 
-                if (tracker != null)
-                {
-                    String calculation = query.Substring(tracker.getIndexStart() + 1,
-                        tracker.getIndexEnd() - tracker.getIndexStart() - 1);
-                    String result = doCalculation(calculation);
+                StringBuilder stringBuilder = _util.replaceIndexFromTomInString(index, query, result);
 
-                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
-                        tracker.getIndexEnd(), query, result);
-
-                    query = stringBuilder.ToString();
+                query = stringBuilder.ToString();
+                return query;
+                
                     i++;
-                }
-            } while (tracker != null);
+            } while (index != null);
 
             return query;
         }
-
-        private OperatorTracker findNestedCalculations(String query)
+        
+        private Index findNestedCalculations(String query)
         {
-            OperatorTracker tracker = new OperatorTracker();
-            for (int i = 0; i < query.Length; i++)
+            Index index = new NestedCalculationTracker(query);
+
+            if (index.IsComplete())
             {
-                char ch = query[i];
-
-                if (ch == '(')
-                {
-                    tracker.setIndexStart(i);
-                }
-
-                if (ch == ')')
-                {
-                    tracker.setIndexEnd(i);
-                    return tracker;
-                }
+                return index;
             }
 
-            return null;
+            return new Invalid();
         }
 
         private String doCalculation(String query)
