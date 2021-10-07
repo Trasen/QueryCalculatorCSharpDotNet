@@ -22,36 +22,41 @@ namespace QueryCalculator.Calculator.Calculations
             {
                 char currentCharacter = query[characterPositionInString];
 
+                
+                //-2 + -2
+                if (characterPositionInString == 0 && currentCharacter == '-')
+                {
+                    continue;
+                }
+
+                if (currentCharacter == '-' && !Char.IsNumber(query[characterPositionInString - 1]))
+                {
+                    continue;
+                }
+
                 type = type.samePriorityCalculations(currentCharacter);
 
                 if (type.isCharacterTheCurrentOperatorType(currentCharacter))
                 {
-                    
-                    
-                    if(type.getOperatorType() != '-') {
                     operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
-                    }
-                    else
-                    {
-                        if (characterPositionInString != 0)
-                        {
-                            if (Char.IsNumber(query[characterPositionInString -1]))
-                            {
-                                operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
-                            }
-                        }
-                        else
-                        {
-                            operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
-                        }
-                    }
-
+                    
                     lastOperatorIndex = characterPositionInString + 1;
 
                     for (int j = characterPositionInString + 1; j < query.Length; j++)
                     {
                         char nestedCharacter = query[j];
 
+                        //-2 + -2
+                        if (j == 0 && nestedCharacter == '-')
+                        {
+                            continue;
+                        }
+
+                        if (nestedCharacter == '-' && !Char.IsNumber(query[j - 1]))
+                        {
+                            continue;
+                        }
+                        
                         if (CalculationType.isCharacterAnOperator(nestedCharacter))
                         {
                             operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
