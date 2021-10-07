@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using QueryCalculator.Calculator.Calculations;
 
 namespace QueryCalculator.Calculator
@@ -31,14 +30,14 @@ namespace QueryCalculator.Calculator
 
         private String removeUnsupportedCharacters(String query)
         {
-
             StringBuilder flushedString = new StringBuilder();
-            
+
             for (int i = 0; i < query.Length; i++)
             {
                 char ch = query[i];
 
-                if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')' || ch == ',' || ch == '.')
+                if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')' || ch == ',' ||
+                    ch == '.')
                 {
                     flushedString.Append(ch);
                 }
@@ -52,7 +51,7 @@ namespace QueryCalculator.Calculator
         private String dealWithNestedCalculations(String query)
         {
             OperatorTracker tracker;
-            
+
             int i = 0;
             do
             {
@@ -77,21 +76,11 @@ namespace QueryCalculator.Calculator
 
         private OperatorTracker findNestedCalculations(String query)
         {
-            OperatorTracker tracker = new OperatorTracker();
-            for (int i = 0; i < query.Length; i++)
+            NestedCalculationTracker tracker = new NestedCalculationTracker(query);
+
+            if (tracker.IsComplete())
             {
-                char ch = query[i];
-
-                if (ch == '(')
-                {
-                    tracker.setIndexStart(i);
-                }
-
-                if (ch == ')')
-                {
-                    tracker.setIndexEnd(i);
-                    return tracker;
-                }
+                return tracker;
             }
 
             return null;
@@ -105,8 +94,35 @@ namespace QueryCalculator.Calculator
             {
                 calculation.run(CalculationType.getOrderOf()[key].Values.First());
             }
-            
+
             return calculation.getResult();
+        }
+    }
+
+    internal class NestedCalculationTracker : OperatorTracker
+    {
+        public NestedCalculationTracker(string query)
+        {
+            for (int i = 0; i < query.Length; i++)
+            {
+                char ch = query[i];
+
+                if (ch == '(')
+                {
+                    indexStart = i;
+                }
+
+                if (ch == ')')
+                {
+                    indexEnd = i;
+                    break;
+                }
+            }
+        }
+
+        public bool IsComplete()
+        {
+            return !(indexStart == -1 || indexEnd == -1);;
         }
     }
 }
