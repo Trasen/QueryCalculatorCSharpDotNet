@@ -82,7 +82,7 @@ namespace QueryCalculator.Calculator.Calculations
             return map.ContainsKey(ch);
         }
         
-        protected string removeCalculatedExpressionFromQuery(List<OperatorTracker> trackers, StringBuilder stringBuilder, string tmp)
+        protected string removeCalculatedExpressionFromQuery(List<IndexTracker> trackers, StringBuilder stringBuilder, string tmp)
         {
             string query;
             stringBuilder.Remove(trackers[0].getIndexStart(), trackers[1].getIndexEnd() - trackers[0].getIndexStart())
@@ -92,7 +92,7 @@ namespace QueryCalculator.Calculator.Calculations
             return query;
         }
 
-        public String resolve(List<OperatorTracker> trackers, String query)
+        public String resolve(List<IndexTracker> trackers, String query)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
@@ -107,7 +107,7 @@ namespace QueryCalculator.Calculator.Calculations
 
         protected abstract decimal calculate(params decimal[] values);
 
-        protected abstract decimal[] extractCalculatableNumbers(List<OperatorTracker> trackers, string query);
+        protected abstract decimal[] extractCalculatableNumbers(List<IndexTracker> trackers, string query);
 
     }
 }

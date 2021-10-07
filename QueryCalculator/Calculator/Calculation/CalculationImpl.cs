@@ -14,7 +14,7 @@ namespace QueryCalculator.Calculator.Calculations
         public Calculation run(CalculationType type)
         {
             int lastOperatorIndex = 0;
-            List<OperatorTracker> operatorTrackers = new();
+            List<IndexTracker> operatorTrackers = new();
 
             for (int characterPositionInString = 0;
                 characterPositionInString < query.Length;
@@ -29,7 +29,7 @@ namespace QueryCalculator.Calculator.Calculations
                     
                     
                     if(type.getOperatorType() != '-') {
-                    operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                    operatorTrackers.Add(new IndexTracker(lastOperatorIndex, characterPositionInString));
                     }
                     else
                     {
@@ -37,12 +37,16 @@ namespace QueryCalculator.Calculator.Calculations
                         {
                             if (Char.IsNumber(query[characterPositionInString -1]))
                             {
-                                operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                                operatorTrackers.Add(new IndexTracker(lastOperatorIndex, characterPositionInString));
+                            } else if(!Char.IsNumber(query[characterPositionInString -1]))
+                            {
+                                
                             }
                         }
+                        
                         else
                         {
-                            operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString));
+                            continue;
                         }
                     }
 
@@ -54,7 +58,7 @@ namespace QueryCalculator.Calculator.Calculations
 
                         if (CalculationType.isCharacterAnOperator(nestedCharacter))
                         {
-                            operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
+                            operatorTrackers.Add(new IndexTracker(lastOperatorIndex, j));
                             lastOperatorIndex = j + 1;
                             j = query.Length;
                         }
@@ -62,12 +66,16 @@ namespace QueryCalculator.Calculator.Calculations
                 }
                 else if (CalculationType.isCharacterAnOperator(currentCharacter))
                 {
-                    lastOperatorIndex = characterPositionInString + 1;
+                    if (currentCharacter != '-')
+                    {
+                        lastOperatorIndex = characterPositionInString + 1;
+                    }
+
                 }
 
                 if (characterPositionInString == query.Length - 1)
                 {
-                    operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, characterPositionInString + 1));
+                    operatorTrackers.Add(new IndexTracker(lastOperatorIndex, characterPositionInString + 1));
                 }
 
                 if (isOperatorsResolvable(operatorTrackers))
@@ -83,7 +91,7 @@ namespace QueryCalculator.Calculator.Calculations
             return this;
         }
 
-        private bool isOperatorsResolvable(List<OperatorTracker> operatorTrackers)
+        private bool isOperatorsResolvable(List<IndexTracker> operatorTrackers)
         {
             if (operatorTrackers.Count == 2)
             {

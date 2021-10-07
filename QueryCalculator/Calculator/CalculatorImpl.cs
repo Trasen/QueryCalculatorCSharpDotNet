@@ -51,7 +51,7 @@ namespace QueryCalculator.Calculator
 
         private String dealWithNestedCalculations(String query)
         {
-            OperatorTracker tracker;
+            IndexTracker tracker;
             
             int i = 0;
             do
@@ -75,9 +75,9 @@ namespace QueryCalculator.Calculator
             return query;
         }
 
-        private OperatorTracker findNestedCalculations(String query)
+        private IndexTracker findNestedCalculations(String query)
         {
-            OperatorTracker tracker = new OperatorTracker();
+            IndexTracker tracker = new IndexTracker();
             for (int i = 0; i < query.Length; i++)
             {
                 char ch = query[i];

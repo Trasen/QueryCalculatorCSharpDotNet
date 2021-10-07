@@ -10,7 +10,7 @@ namespace QueryCalculator.Calculator.Calculations
         {
         }
 
-        override protected decimal[] extractCalculatableNumbers(List<OperatorTracker> trackers, string query)
+        override protected decimal[] extractCalculatableNumbers(List<IndexTracker> trackers, string query)
         {
             decimal[] numbers = new decimal[2];
 

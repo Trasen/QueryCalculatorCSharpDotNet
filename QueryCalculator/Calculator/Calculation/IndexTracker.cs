@@ -1,16 +1,16 @@
 ﻿namespace QueryCalculator.Calculator.Calculations
 {
-    public class OperatorTracker
+    public class IndexTracker
     {
         private int indexStart = -1;
         private int indexEnd = -1;
 
-        public OperatorTracker(int indexStart, int indexEnd) {
+        public IndexTracker(int indexStart, int indexEnd) {
             this.indexStart = indexStart;
             this.indexEnd = indexEnd;
         }
 
-        public OperatorTracker() {}
+        public IndexTracker() {}
 
         public int getIndexStart() {
             return indexStart;
