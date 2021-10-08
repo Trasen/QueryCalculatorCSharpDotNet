@@ -50,41 +50,24 @@ namespace QueryCalculator.Calculator
 
         private String dealWithNestedCalculations(String query)
         {
-            OperatorTracker tracker;
+            NestedCalculationTracker tracker = NestedCalculationTracker.findNestedCalculation(query);
 
-            int i = 0;
-            do
+            while (tracker != null)
             {
-                tracker = findNestedCalculations(query);
+                var calculation = NestedCalculationTracker.extractNestedCalculation(query, tracker);
+                String result = doCalculation(calculation);
 
-                if (tracker != null)
-                {
-                    String calculation = query.Substring(tracker.getIndexStart() + 1,
-                        tracker.getIndexEnd() - tracker.getIndexStart() - 1);
-                    String result = doCalculation(calculation);
+                StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
+                    tracker.getIndexEnd(), query, result);
 
-                    StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
-                        tracker.getIndexEnd(), query, result);
+                query = stringBuilder.ToString();
 
-                    query = stringBuilder.ToString();
-                    i++;
-                }
-            } while (tracker != null);
+                tracker = NestedCalculationTracker.findNestedCalculation(query);
+            }
 
             return query;
         }
-
-        private OperatorTracker findNestedCalculations(String query)
-        {
-            NestedCalculationTracker tracker = new NestedCalculationTracker(query);
-
-            if (tracker.IsComplete())
-            {
-                return tracker;
-            }
-
-            return null;
-        }
+        
 
         private String doCalculation(String query)
         {
