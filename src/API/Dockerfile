@@ -5,8 +5,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["src/DotNetAPIDefinition/DotNetAPIDefinition.csproj", "DotNetAPIDefinition/"]
-RUN dotnet restore "src/DotNetAPIDefinition/DotNetAPIDefinition.csproj"
+COPY ["/", "/"]
+RUN ls
+RUN dotnet restore "DotNetAPIDefinition/DotNetAPIDefinition.csproj"
 COPY . .
 WORKDIR "/src/DotNetAPIDefinition"
 RUN dotnet build "DotNetAPIDefinition.csproj" -c Release -o /app/build

@@ -14,7 +14,7 @@ namespace QueryCalculator.Calculator.Calculations
         public Calculation run(CalculationType type)
         {
             int lastOperatorIndex = 0;
-            List<OperatorTracker> operatorTrackers = new();
+            List<OperatorTracker> operatorTrackers = new List<OperatorTracker>();
 
             for (int characterPositionInString = 0;
                 characterPositionInString < query.Length;
@@ -24,15 +24,7 @@ namespace QueryCalculator.Calculator.Calculations
 
                 
                 //-2 + -2
-                if (characterPositionInString == 0 && currentCharacter == '-')
-                {
-                    continue;
-                }
-
-                if (currentCharacter == '-' && !Char.IsNumber(query[characterPositionInString - 1]))
-                {
-                    continue;
-                }
+                if (ValueIsNegativeNotOperator(characterPositionInString, currentCharacter)) continue;
 
                 type = type.samePriorityCalculations(currentCharacter);
 
@@ -46,17 +38,8 @@ namespace QueryCalculator.Calculator.Calculations
                     {
                         char nestedCharacter = query[j];
 
-                        //-2 + -2
-                        if (j == 0 && nestedCharacter == '-')
-                        {
-                            continue;
-                        }
-
-                        if (nestedCharacter == '-' && !Char.IsNumber(query[j - 1]))
-                        {
-                            continue;
-                        }
-                        
+                        if (ValueIsNegativeNotOperator(j, nestedCharacter)) continue;
+                     
                         if (CalculationType.isCharacterAnOperator(nestedCharacter))
                         {
                             operatorTrackers.Add(new OperatorTracker(lastOperatorIndex, j));
@@ -86,6 +69,21 @@ namespace QueryCalculator.Calculator.Calculations
             }
 
             return this;
+        }
+
+        private bool ValueIsNegativeNotOperator(int characterPositionInString, char currentCharacter)
+        {
+            if (characterPositionInString == 0 && currentCharacter == '-')
+            {
+                return true;
+            }
+
+            if (currentCharacter == '-' && !Char.IsNumber(query[characterPositionInString - 1]))
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private bool isOperatorsResolvable(List<OperatorTracker> operatorTrackers)

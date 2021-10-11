@@ -8,8 +8,8 @@ namespace QueryCalculator.Calculator
     {
         public StringBuilder replaceIndexFromTomInString(int start, int end, String original, String replacement)
         {
-            List<char> array = new(original.ToCharArray());
-            List<char> replacementArray = new(replacement.ToCharArray());
+            List<char> array = new List<char>(original.ToCharArray());
+            List<char> replacementArray = new List<char>(replacement.ToCharArray());
 
             for (int i = start; i <= end; i++)
             {

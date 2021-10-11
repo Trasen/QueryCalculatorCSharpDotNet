@@ -7,8 +7,8 @@ namespace QueryCalculator.Calculator.Calculations
 {
     public abstract class CalculationType
     {
-        private static Dictionary<char, CalculationType> map = new();
-        private static Dictionary<int, Dictionary<char, CalculationType>> priorityIndex = new();
+        private static Dictionary<char, CalculationType> map = new Dictionary<char, CalculationType>();
+        private static Dictionary<int, Dictionary<char, CalculationType>> priorityIndex = new Dictionary<int, Dictionary<char, CalculationType>>();
         protected char mathOperator;
         protected int priority;
 
