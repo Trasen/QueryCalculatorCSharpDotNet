@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <RootNamespace>DotNetAPIDefinition</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\QueryCalculator\QueryCalculator.csproj" />
+      <ProjectReference Include="..\QueryCalculator\QueryCalculator.csproj" />
     </ItemGroup>
 
 </Project>
