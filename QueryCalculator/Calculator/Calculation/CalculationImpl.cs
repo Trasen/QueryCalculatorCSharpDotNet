@@ -14,7 +14,7 @@ namespace QueryCalculator.Calculator.Calculations
         public Calculation run(CalculationType type)
         {
             int lastOperatorIndex = 0;
-            List<OperatorTracker> operatorTrackers = new();
+            List<OperatorTracker> operatorTrackers = new List<OperatorTracker>();
 
             for (int characterPositionInString = 0;
                 characterPositionInString < query.Length;

@@ -7,7 +7,7 @@ namespace CalculatorTests
 {
     public class UtilTest
     {
-        private  Util util = new();
+        private  Util util = new Util();
         
   
 

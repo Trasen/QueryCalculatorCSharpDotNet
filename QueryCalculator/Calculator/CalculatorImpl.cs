@@ -8,7 +8,7 @@ namespace QueryCalculator.Calculator
 {
     public class CalculatorImpl : Calculator
     {
-        private readonly Util _util = new();
+        private readonly Util _util = new Util();
         Dictionary<int, Dictionary<char, CalculationType>> orderOf = CalculationType.getOrderOf();
         List<int> keys;
 
