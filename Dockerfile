@@ -5,14 +5,15 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
-COPY ["/", "/QueruCalculator"]
 
-RUN dotnet restore "/QueruCalculator/API/API.csproj"
+COPY ["/", "/QueryCalculator"]
+RUN dotnet restore "/QueryCalculator/API/API.csproj"
 COPY . .
-RUN dotnet build "/QueruCalculator/API/API.csproj" -c Release -o /app/build
+RUN dotnet test "/QueryCalculator/API/API.csproj" -c Release -o /app/build
+RUN dotnet build "/QueryCalculator/API/API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "/QueruCalculator/API/API.csproj" -c Release -o /app/publish
+RUN dotnet publish "/QueryCalculator/API/API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
