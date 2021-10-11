@@ -1,19 +1,20 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 
 
-COPY ["/", "/QueryCalculator"]
-RUN dotnet restore "/QueryCalculator/API/API.csproj"
+COPY ["/", "/querycalculator"]
+
+RUN dotnet test "/querycalculator/QueryCalculator/"
 COPY . .
-RUN dotnet test "/QueryCalculator/API/API.csproj" -c Release -o /app/build
-RUN dotnet build "/QueryCalculator/API/API.csproj" -c Release -o /app/build
+
+RUN dotnet build  "/querycalculator/API/API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "/QueryCalculator/API/API.csproj" -c Release -o /app/publish
+RUN dotnet publish "/querycalculator/API/API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
