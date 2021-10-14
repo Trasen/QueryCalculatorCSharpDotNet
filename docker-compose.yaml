@@ -1,4 +1,4 @@
-﻿version: "3.9" 
+﻿version: "2.4" 
 services:
   web:
     build: 
@@ -6,6 +6,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:80"
-      - "8081:443"
-    environment:
-      -    
+      - "8081:443"   
