@@ -98,11 +98,15 @@ namespace QueryCalculator.Calculator
 
     public class DataStoreFactory
     {
-   
 
+        private static DataStore dataStore;
+        
         public static DataStore get()
         {
-            return new DefaultDatastore();
+            if(dataStore == null)
+                return new DefaultDatastore();
+
+            return dataStore;
         }
     }
 
