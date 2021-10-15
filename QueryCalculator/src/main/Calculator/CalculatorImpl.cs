@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using QueryCalculator.Calculator.Calculations;
 
 namespace QueryCalculator.Calculator
@@ -20,12 +21,20 @@ namespace QueryCalculator.Calculator
 
         public String calculate(String query)
         {
-            query = removeUnsupportedCharacters(query);
+            try
+            {
+                query = removeUnsupportedCharacters(query);
 
-            query = dealWithNestedCalculations(query);
+                query = dealWithNestedCalculations(query);
 
-            System.Console.WriteLine(query);
-            return doCalculation(query);
+                System.Console.WriteLine(query);
+                return doCalculation(query);
+            }
+            catch (Exception e)
+            {
+                DataStore dataStore = DataStoreFactory.get();
+                return e.ToString();
+            }
         }
 
         private String removeUnsupportedCharacters(String query)
@@ -67,7 +76,7 @@ namespace QueryCalculator.Calculator
 
             return query;
         }
-        
+
 
         private String doCalculation(String query)
         {
@@ -79,6 +88,30 @@ namespace QueryCalculator.Calculator
             }
 
             return calculation.getResult();
+        }
+    }
+
+    public interface DataStore
+    {
+        String Save(Exception exception);
+    }
+
+    public class DataStoreFactory
+    {
+   
+
+        public static DataStore get()
+        {
+            return new DefaultDatastore();
+        }
+    }
+
+    public class DefaultDatastore : DataStore
+    {
+        public string Save(Exception exception)
+        {
+            Console.WriteLine(exception);
+            return exception.ToString();
         }
     }
 }

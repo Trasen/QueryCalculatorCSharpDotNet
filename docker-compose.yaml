@@ -1,9 +1,7 @@
-﻿#version: "3.9" 
+﻿version: "3.5" 
 services:
   web:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    build: https://github.com/Trasen/QueryCalculatorCSharpDotNet
     ports:
       - "8080:80"
       - "8081:443"   
