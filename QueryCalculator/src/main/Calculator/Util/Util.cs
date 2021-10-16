@@ -6,7 +6,7 @@ namespace QueryCalculator.Calculator
 {
     public class Util
     {
-        public StringBuilder replaceIndexFromTomInString(int start, int end, String original, String replacement)
+        public StringBuilder replacaseIndexFromTomInString(int start, int end, String original, String replacement)
         {
             List<char> array = new List<char>(original.ToCharArray());
             List<char> replacementArray = new List<char>(replacement.ToCharArray());

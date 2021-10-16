@@ -66,7 +66,7 @@ namespace QueryCalculator.Calculator
                 var calculation = NestedCalculationTracker.extractNestedCalculation(query, tracker);
                 String result = doCalculation(calculation);
 
-                StringBuilder stringBuilder = _util.replaceIndexFromTomInString(tracker.getIndexStart(),
+                StringBuilder stringBuilder = _util.replacaseIndexFromTomInString(tracker.getIndexStart(),
                     tracker.getIndexEnd(), query, result);
 
                 query = stringBuilder.ToString();
@@ -100,7 +100,15 @@ namespace QueryCalculator.Calculator
     {
 
         private static DataStore dataStore;
-        
+
+        public DataStoreFactory(DataStore dataStoreInjection)
+        {
+            if (dataStore == null)
+            {
+                dataStore = dataStoreInjection;
+            }
+        }
+
         public static DataStore get()
         {
             if(dataStore == null)
