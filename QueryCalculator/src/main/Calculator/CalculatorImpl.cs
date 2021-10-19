@@ -9,9 +9,10 @@ namespace QueryCalculator.Calculator
 {
     public class CalculatorImpl : Calculator
     {
+        private DataStore dataStore = DataStoreFactory.get();
         private readonly Util _util = new Util();
-        Dictionary<int, Dictionary<char, CalculationType>> orderOf = CalculationType.getOrderOf();
-        List<int> keys;
+        private Dictionary<int, Dictionary<char, CalculationType>> orderOf = CalculationType.getOrderOf();
+        private List<int> keys;
 
         public CalculatorImpl()
         {
@@ -23,16 +24,17 @@ namespace QueryCalculator.Calculator
         {
             try
             {
+                dataStore.Save(query);
                 query = removeUnsupportedCharacters(query);
 
                 query = dealWithNestedCalculations(query);
 
-                System.Console.WriteLine(query);
-                return doCalculation(query);
+                String result = doCalculation(query);
+                dataStore.Save(result);
+                return result;
             }
             catch (Exception e)
             {
-                DataStore dataStore = DataStoreFactory.get();
                 return e.ToString();
             }
         }
@@ -93,7 +95,7 @@ namespace QueryCalculator.Calculator
 
     public interface DataStore
     {
-        String Save(Exception exception);
+        String Save(String value);
     }
 
     public class DataStoreFactory
@@ -120,10 +122,10 @@ namespace QueryCalculator.Calculator
 
     public class DefaultDatastore : DataStore
     {
-        public string Save(Exception exception)
+        public string Save(string value)
         {
-            Console.WriteLine(exception);
-            return exception.ToString();
+            Console.WriteLine(value);
+            return value;
         }
     }
 }

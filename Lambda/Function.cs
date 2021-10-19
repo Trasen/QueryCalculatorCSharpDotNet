@@ -8,6 +8,12 @@ namespace Lambda
 {
     public class Function
     {
+
+        static Function()
+        {
+             new DataStoreFactory(new DataStore());
+        }
+
         public string FunctionHandler(string input, ILambdaContext context)
         {
             Calculator calculator = new CalculatorImpl();
@@ -15,5 +21,3 @@ namespace Lambda
         }
     }
 }
-
-//QueryCalculator::Lambda.Function::FunctionHandler
