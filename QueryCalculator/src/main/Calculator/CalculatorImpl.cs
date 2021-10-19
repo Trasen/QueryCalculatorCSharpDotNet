@@ -113,8 +113,8 @@ namespace QueryCalculator.Calculator
 
         public static DataStore get()
         {
-            if(dataStore == null)
-                return new DefaultDatastore();
+            if (dataStore == null)
+                dataStore = new DefaultDatastore();
 
             return dataStore;
         }
