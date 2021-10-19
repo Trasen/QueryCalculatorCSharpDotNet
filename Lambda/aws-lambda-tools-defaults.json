@@ -12,6 +12,6 @@
   "function-runtime": "dotnetcore3.1",
   "function-memory-size": 128,
   "function-timeout": 10,
-  "function-handler": "QueryCalculator::Lambda.Function::FunctionHandler",
+  "function-handler": "Lambda::Lambda.Function::FunctionHandler",
   "function-name": "QueryCalculator"
 }

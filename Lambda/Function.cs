@@ -8,7 +8,6 @@ namespace Lambda
 {
     public class Function
     {
-        
         public string FunctionHandler(string input, ILambdaContext context)
         {
             Calculator calculator = new CalculatorImpl();
