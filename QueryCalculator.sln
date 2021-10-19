@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryCalculator", "QueryCalculator\QueryCalculator.csproj", "{3C6F2A0A-04E9-4099-872F-8B12A13FB088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunction", "AzureFunction\AzureFunction.csproj", "{CA115A03-8D55-4F03-928A-31E892B04D9B}"
+EndPr oject
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{A9646669-2C54-4B0A-A4FE-865696A4A099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWSLambda", "AWSLambda\AWSLambda.csproj", "{38D1C219-91D3-4B3F-8B50-407B6273E3BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambda", "Lambda\Lambda.csproj", "{963CE9A2-CA03-410A-8476-E8A7FF292F1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +27,12 @@ Global
 		{A9646669-2C54-4B0A-A4FE-865696A4A099}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9646669-2C54-4B0A-A4FE-865696A4A099}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9646669-2C54-4B0A-A4FE-865696A4A099}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38D1C219-91D3-4B3F-8B50-407B6273E3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38D1C219-91D3-4B3F-8B50-407B6273E3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38D1C219-91D3-4B3F-8B50-407B6273E3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38D1C219-91D3-4B3F-8B50-407B6273E3BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C6F2A0A-04E9-4099-872F-8B12A13FB023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C6F2A0A-04E9-4099-872F-8B12A13FB023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963CE9A2-CA03-410A-8476-E8A7FF292F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963CE9A2-CA03-410A-8476-E8A7FF292F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963CE9A2-CA03-410A-8476-E8A7FF292F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963CE9A2-CA03-410A-8476-E8A7FF292F1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
