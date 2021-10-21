@@ -9,10 +9,11 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.tfstate.*
+*.tfstate
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-
+.terraform
 # Mono auto generated files
 mono_crash.*
 Lambda/.aws-sam/
