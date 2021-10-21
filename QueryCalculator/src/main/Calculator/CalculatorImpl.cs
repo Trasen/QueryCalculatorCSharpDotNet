@@ -22,15 +22,15 @@ namespace QueryCalculator.Calculator
 
         public String calculate(String query)
         {
+            string originalQuery = query;
             try
             {
-                dataStore.Save(query);
                 query = removeUnsupportedCharacters(query);
 
                 query = dealWithNestedCalculations(query);
 
                 String result = doCalculation(query);
-                dataStore.Save(result);
+                dataStore.Save( "Original: " + originalQuery + "Result: " + result);
                 return result;
             }
             catch (Exception e)
@@ -75,7 +75,6 @@ namespace QueryCalculator.Calculator
 
                 tracker = NestedCalculationTracker.findNestedCalculation(query);
             }
-
             return query;
         }
 
