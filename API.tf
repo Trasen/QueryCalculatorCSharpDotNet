@@ -7,8 +7,23 @@ terraform {
   }
 }
 
+variable "dockerhost" {
+  default = "npipe:////.//pipe//docker_engine"
+}
+
+variable "internalport" {
+  default = 80
+}
+
+variable "externalport" {
+  default = 8087
+}
+        
+        
+
 provider "docker" {
-  host = "npipe:////.//pipe//docker_engine"
+  
+  host = var.dockerhost
 }
 
 resource "docker_container" "aspnet" {
