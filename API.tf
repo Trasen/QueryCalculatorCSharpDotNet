@@ -18,12 +18,9 @@ variable "internalport" {
 variable "externalport" {
   default = 8087
 }
-        
-        
 
 provider "docker" {
-  
-  host = var.dockerhost
+   host = var.dockerhost
 }
 
 resource "docker_container" "aspnet" {
@@ -35,7 +32,6 @@ resource "docker_container" "aspnet" {
     external = 8087
   }
 }
-
 
 resource "docker_image" "aspnet" {
   name = "aspnet"
