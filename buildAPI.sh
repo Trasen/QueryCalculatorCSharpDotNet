@@ -14,4 +14,12 @@ esac
 docker build -t aspnet -f ./API/Dockerfile .
 terraform init
 
-terraform apply -var dockerhost="${machine}" -auto-approve
+
+if [ machine -n ]
+ then
+    terraform apply -var dockerhost="${machine}" -auto-approve
+else    
+  terraform apply -var dockerhost="${machine}" -auto-approve
+fi
+
+
