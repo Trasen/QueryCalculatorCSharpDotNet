@@ -6,7 +6,7 @@ namespace CalculatorTests
 {
     public class Tests
     {
-        private Calculator calculator = new CalculatorImpl();
+        private ICalculator calculator = new CalculatorImpl();
 
         [Test]
         public void SingleDivision()

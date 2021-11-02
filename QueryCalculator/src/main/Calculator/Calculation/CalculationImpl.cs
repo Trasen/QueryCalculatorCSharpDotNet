@@ -5,8 +5,8 @@ namespace QueryCalculator.Calculator.Calculations
 {
     class CalculationImpl : Calculation
     {
-        private String query;
-        public CalculationImpl(String query)
+        private string query;
+        public CalculationImpl(string query)
         {
             this.query = query;
         }
@@ -97,7 +97,7 @@ namespace QueryCalculator.Calculator.Calculations
         }
         
 
-        public String getResult()
+        public string getResult()
         {
             return this.query;
         }

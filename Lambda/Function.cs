@@ -16,7 +16,7 @@ namespace Lambda
 
         public string FunctionHandler(string input, ILambdaContext context)
         {
-            Calculator calculator = new CalculatorImpl();
+            ICalculator calculator = new CalculatorImpl();
             return calculator.calculate(input);
         }
     }

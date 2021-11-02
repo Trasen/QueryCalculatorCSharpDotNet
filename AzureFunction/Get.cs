@@ -15,7 +15,7 @@ namespace AzureFunction
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)]
             HttpRequest req, ILogger log)
         {
-            Calculator calculator = new CalculatorImpl();
+            ICalculator calculator = new CalculatorImpl();
             string response = calculator.calculate(req.Query.First().Key);
             return response;
         }

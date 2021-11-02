@@ -7,7 +7,7 @@ using QueryCalculator.Calculator.Calculations;
 
 namespace QueryCalculator.Calculator
 {
-    public class CalculatorImpl : Calculator
+    public class CalculatorImpl : ICalculator
     {
         private DataStore dataStore = DataStoreFactory.get();
         private readonly Util _util = new Util();
@@ -68,7 +68,7 @@ namespace QueryCalculator.Calculator
                 var calculation = NestedCalculationTracker.extractNestedCalculation(query, tracker);
                 String result = doCalculation(calculation);
 
-                StringBuilder stringBuilder = _util.replacaseIndexFromTomInString(tracker.getIndexStart(),
+                StringBuilder stringBuilder = _util.ReplacaseIndexFromTomInString(tracker.getIndexStart(),
                     tracker.getIndexEnd(), query, result);
 
                 query = stringBuilder.ToString();

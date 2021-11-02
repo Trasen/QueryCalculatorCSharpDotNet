@@ -6,6 +6,6 @@ namespace QueryCalculator.Calculator.Calculations
     public interface Calculation
     {
         Calculation run(CalculationType type);
-        String getResult();
+        string getResult();
     }
 }

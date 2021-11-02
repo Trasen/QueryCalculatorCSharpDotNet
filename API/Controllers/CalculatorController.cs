@@ -22,7 +22,7 @@ namespace DotNetAPIDefinition.Controllers
         [HttpGet]
         public String Get(String calculation)
         {
-            Calculator calculator = new CalculatorImpl();
+            ICalculator calculator = new CalculatorImpl();
             return calculator.calculate(calculation);
         }
     }

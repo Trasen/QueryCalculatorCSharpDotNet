@@ -8,7 +8,7 @@ namespace Lambda
     {
         public string Save(string value)
         {
-            LambdaLogger.Log("Hello from Lambda Implementation of Save(), Value: "+ value);
+            LambdaLogger.Log("Hello from Lambda Implementation of Save(), Value: " + value);
             return "Hello from Lambda Implementation of Save()";
         }
     }

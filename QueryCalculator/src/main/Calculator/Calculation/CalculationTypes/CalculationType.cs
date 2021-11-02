@@ -92,7 +92,7 @@ namespace QueryCalculator.Calculator.Calculations
             return query;
         }
 
-        public String resolve(List<OperatorTracker> trackers, String query)
+        public string resolve(List<OperatorTracker> trackers, string query)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
