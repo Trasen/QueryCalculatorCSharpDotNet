@@ -8,19 +8,19 @@ namespace QueryCalculator.Calculator
     {
         public StringBuilder ReplacaseIndexFromTomInString(int start, int end, string original, string replacement)
         {
-            List<char> array = new List<char>(original.ToCharArray());
-            List<char> replacementArray = new List<char>(replacement.ToCharArray());
+            var array = new List<char>(original.ToCharArray());
+            var replacementArray = new List<char>(replacement.ToCharArray());
 
-            for (int i = start; i <= end; i++)
+            for (var i = start; i <= end; i++)
             {
                 array.RemoveAt(start);
             }
 
-            int k = start;
-            for (int i = 0; i < replacement.Length; i++)
+            var nextIndex = start;
+            for (var i = 0; i < replacement.Length; i++)
             {
-                array.Insert(k, replacementArray[i]);
-                k++;
+                array.Insert(nextIndex, replacementArray[i]);
+                nextIndex++;
             }
 
 

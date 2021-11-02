@@ -25,5 +25,13 @@ namespace DotNetAPIDefinition.Controllers
             ICalculator calculator = new CalculatorImpl();
             return calculator.calculate(calculation);
         }
+        
+        
+        [HttpPost]
+        public String Post(String calculation)
+        {
+            ICalculator calculator = new CalculatorImpl();
+            return calculator.calculate(calculation);
+        }
     }
 }

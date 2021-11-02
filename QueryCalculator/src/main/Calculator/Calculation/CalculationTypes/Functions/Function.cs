@@ -12,7 +12,7 @@ namespace QueryCalculator.Calculator.Calculations
 
         override protected decimal[] extractCalculatableNumbers(List<OperatorTracker> trackers, string query)
         {
-            decimal[] numbers = new decimal[1];
+            var numbers = new decimal[1];
 
             numbers[0] = Convert.ToDecimal(query.Substring(trackers[1].getIndexStart(),
                 trackers[1].getIndexEnd() - trackers[1].getIndexStart()));

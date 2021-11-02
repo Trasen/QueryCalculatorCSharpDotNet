@@ -6,7 +6,7 @@ namespace QueryCalculator.Calculator
     {
         private NestedCalculationTracker(string query)
         {
-            for (int i = 0; i < query.Length; i++)
+            for (var i = 0; i < query.Length; i++)
             {
                 char ch = query[i];
 
@@ -30,7 +30,7 @@ namespace QueryCalculator.Calculator
 
         public static NestedCalculationTracker findNestedCalculation(string query)
         {
-            NestedCalculationTracker tracker = new NestedCalculationTracker(query);
+            var tracker = new NestedCalculationTracker(query);
 
             if (tracker.IsComplete())
             {
@@ -42,7 +42,7 @@ namespace QueryCalculator.Calculator
         
         public static string extractNestedCalculation(string query, OperatorTracker tracker)
         {
-            string calculation = query.Substring(tracker.getIndexStart() + 1,
+            var calculation = query.Substring(tracker.getIndexStart() + 1,
                 tracker.getIndexEnd() - tracker.getIndexStart() - 1);
             return calculation;
         }

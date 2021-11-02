@@ -14,14 +14,14 @@ namespace QueryCalculator.Calculator.Calculations
 
         static CalculationType() // Instance every CalculationType and put them in to order of priority statically - letting us simply create an implementation of a CalculationType and it will automatically be handled correctly in the solution.
         {
-            Type type = typeof(CalculationType);
+            var type = typeof(CalculationType);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p) && !p.IsAbstract);
 
             foreach (var loopType in types)
             {
-                CalculationType calcType = (CalculationType) Activator.CreateInstance(loopType);
+                var calcType = (CalculationType) Activator.CreateInstance(loopType);
                 map.TryAdd(calcType.mathOperator, calcType);
                 
                 priorityIndex.TryAdd(calcType.priority, new Dictionary<char, CalculationType>());
@@ -45,7 +45,7 @@ namespace QueryCalculator.Calculator.Calculations
         {
             if(!isCharacterAnOperator(currentCharacter)) return this;
             
-            Dictionary<char, CalculationType> samePriorityCalculations = CalculationType.getOrderOf()[this.getPriority()];
+            var samePriorityCalculations = CalculationType.getOrderOf()[this.getPriority()];
 
             try
             {
@@ -94,12 +94,12 @@ namespace QueryCalculator.Calculator.Calculations
 
         public string resolve(List<OperatorTracker> trackers, string query)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.Append(query);
 
             decimal[] numbers = extractCalculatableNumbers(trackers, query);
             
-            String tmp = Convert.ToString(calculate(numbers));
+            var tmp = Convert.ToString(calculate(numbers));
 
             query = removeCalculatedExpressionFromQuery(trackers, stringBuilder, tmp);
             return query;

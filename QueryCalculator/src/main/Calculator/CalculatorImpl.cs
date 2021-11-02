@@ -20,16 +20,16 @@ namespace QueryCalculator.Calculator
             keys.Sort();
         }
 
-        public String calculate(String query)
+        public string calculate(String query)
         {
-            string originalQuery = query;
+            var originalQuery = query;
             try
             {
                 query = removeUnsupportedCharacters(query);
 
                 query = dealWithNestedCalculations(query);
 
-                String result = doCalculation(query);
+                var result = doCalculation(query);
                 dataStore.Save( "Original: " + originalQuery + "Result: " + result);
                 return result;
             }
@@ -39,13 +39,13 @@ namespace QueryCalculator.Calculator
             }
         }
 
-        private String removeUnsupportedCharacters(String query)
+        private string removeUnsupportedCharacters(String query)
         {
-            StringBuilder flushedString = new StringBuilder();
+            var flushedString = new StringBuilder();
 
-            for (int i = 0; i < query.Length; i++)
+            for (var i = 0; i < query.Length; i++)
             {
-                char ch = query[i];
+                var ch = query[i];
 
                 if (CalculationType.Contains(ch) || char.IsDigit(ch) || ch == '(' || ch == ')' || ch == ',' ||
                     ch == '.')
@@ -59,16 +59,16 @@ namespace QueryCalculator.Calculator
             return query;
         }
 
-        private String dealWithNestedCalculations(String query)
+        private string dealWithNestedCalculations(string query)
         {
-            NestedCalculationTracker tracker = NestedCalculationTracker.findNestedCalculation(query);
+            var tracker = NestedCalculationTracker.findNestedCalculation(query);
 
             while (tracker != null)
             {
                 var calculation = NestedCalculationTracker.extractNestedCalculation(query, tracker);
-                String result = doCalculation(calculation);
+                var result = doCalculation(calculation);
 
-                StringBuilder stringBuilder = _util.ReplacaseIndexFromTomInString(tracker.getIndexStart(),
+                var stringBuilder = _util.ReplacaseIndexFromTomInString(tracker.getIndexStart(),
                     tracker.getIndexEnd(), query, result);
 
                 query = stringBuilder.ToString();
@@ -79,9 +79,9 @@ namespace QueryCalculator.Calculator
         }
 
 
-        private String doCalculation(String query)
+        private string doCalculation(String query)
         {
-            Calculation calculation = new CalculationImpl(query);
+            var calculation = new CalculationImpl(query);
 
             foreach (var key in keys)
             {
@@ -94,7 +94,7 @@ namespace QueryCalculator.Calculator
 
     public interface DataStore
     {
-        String Save(String value);
+        string Save(string value);
     }
 
     public class DataStoreFactory

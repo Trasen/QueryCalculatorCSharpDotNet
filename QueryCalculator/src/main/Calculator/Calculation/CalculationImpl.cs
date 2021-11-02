@@ -13,14 +13,14 @@ namespace QueryCalculator.Calculator.Calculations
 
         public Calculation run(CalculationType type)
         {
-            int lastOperatorIndex = 0;
-            List<OperatorTracker> operatorTrackers = new List<OperatorTracker>();
+            var lastOperatorIndex = 0;
+            var operatorTrackers = new List<OperatorTracker>();
 
-            for (int characterPositionInString = 0;
+            for (var characterPositionInString = 0;
                 characterPositionInString < query.Length;
                 characterPositionInString++)
             {
-                char currentCharacter = query[characterPositionInString];
+                var currentCharacter = query[characterPositionInString];
 
                 
                 //-2 + -2
@@ -34,7 +34,7 @@ namespace QueryCalculator.Calculator.Calculations
                     
                     lastOperatorIndex = characterPositionInString + 1;
 
-                    for (int j = characterPositionInString + 1; j < query.Length; j++)
+                    for (var j = characterPositionInString + 1; j < query.Length; j++)
                     {
                         char nestedCharacter = query[j];
 
