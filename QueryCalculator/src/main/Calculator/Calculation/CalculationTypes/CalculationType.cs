@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -11,9 +12,10 @@ namespace QueryCalculator.Calculator.Calculations
         private static Dictionary<int, Dictionary<char, CalculationType>> priorityIndex = new Dictionary<int, Dictionary<char, CalculationType>>();
         protected char mathOperator;
         protected int priority;
-
+        
         static CalculationType() // Instance every CalculationType and put them in to order of priority statically - letting us simply create an implementation of a CalculationType and it will automatically be handled correctly in the solution.
         {
+            
             var type = typeof(CalculationType);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -22,11 +24,13 @@ namespace QueryCalculator.Calculator.Calculations
             foreach (var loopType in types)
             {
                 var calcType = (CalculationType) Activator.CreateInstance(loopType);
-                map.TryAdd(calcType.mathOperator, calcType);
-                
-                priorityIndex.TryAdd(calcType.priority, new Dictionary<char, CalculationType>());
-                priorityIndex[calcType.priority].Add(calcType.mathOperator, calcType);
-                
+                if (calcType != null)
+                {
+                    map.TryAdd(calcType.mathOperator, calcType);
+
+                    priorityIndex.TryAdd(calcType.priority, new Dictionary<char, CalculationType>());
+                    priorityIndex[calcType.priority].Add(calcType.mathOperator, calcType);
+                }
             }
         }
 
@@ -45,7 +49,7 @@ namespace QueryCalculator.Calculator.Calculations
         {
             if(!isCharacterAnOperator(currentCharacter)) return this;
             
-            var samePriorityCalculations = CalculationType.getOrderOf()[this.getPriority()];
+            var samePriorityCalculations = getOrderOf()[getPriority()];
 
             try
             {
@@ -99,7 +103,7 @@ namespace QueryCalculator.Calculator.Calculations
 
             decimal[] numbers = extractCalculatableNumbers(trackers, query);
             
-            var tmp = Convert.ToString(calculate(numbers));
+            var tmp = Convert.ToString(calculate(numbers), CultureInfo.InvariantCulture);
 
             query = removeCalculatedExpressionFromQuery(trackers, stringBuilder, tmp);
             return query;

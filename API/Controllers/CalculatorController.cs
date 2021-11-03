@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QueryCalculator.Calculator;
 
-namespace DotNetAPIDefinition.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -20,7 +16,7 @@ namespace DotNetAPIDefinition.Controllers
         }
 
         [HttpGet]
-        public String Get(String calculation)
+        public string Get(string calculation)
         {
             ICalculator calculator = new CalculatorImpl();
             return calculator.calculate(calculation);
@@ -28,7 +24,7 @@ namespace DotNetAPIDefinition.Controllers
         
         
         [HttpPost]
-        public String Post(String calculation)
+        public string Post(string calculation)
         {
             ICalculator calculator = new CalculatorImpl();
             return calculator.calculate(calculation);
