@@ -22,12 +22,5 @@ namespace API.Controllers
             return calculator.calculate(calculation);
         }
         
-        
-        [HttpPost]
-        public string Post(string calculation)
-        {
-            ICalculator calculator = new CalculatorImpl();
-            return calculator.calculate(calculation);
-        }
     }
 }
